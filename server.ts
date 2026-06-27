@@ -733,8 +733,8 @@ I am ready to help you analyze employee attrition risks, inspect predictive driv
     });
   }
 
-  app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Enterprise HR Attrition Server running on http://0.0.0.0:${PORT}`);
+  app.listen(PORT, () => {
+    console.log(`Enterprise HR Attrition Server running on http://localhost:${PORT}`);
   });
 }
 

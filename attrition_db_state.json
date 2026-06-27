@@ -1,0 +1,1784 @@
+[
+  {
+    "id": "EMP-0128",
+    "name": "Marcus Vance",
+    "email": "m.vance@enterprise.io",
+    "department": "R&D",
+    "jobRole": "Lead Cloud Architect",
+    "gender": "Male",
+    "features": {
+      "age": 34,
+      "distanceFromHome": 22,
+      "monthlyIncome": 14200,
+      "overTime": 1,
+      "jobSatisfaction": 2,
+      "environmentSatisfaction": 1,
+      "workLifeBalance": 1,
+      "yearsAtCompany": 3,
+      "yearsInCurrentRole": 3,
+      "yearsSinceLastPromotion": 3,
+      "stockOptionLevel": 0
+    },
+    "actualAttrition": 1,
+    "riskProbability": 0.9261488491720338,
+    "shapValues": {
+      "jobSatisfaction": 0.6478697391526573
+    },
+    "itdoStatus": "Trigger",
+    "itdoDetails": {
+      "triggerAlert": "Overwork & Burnout Alert: Continuous overtime paired with severe Work-Life imbalance.",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [
+        "Establish formal 1-on-1 retention review",
+        "Conduct internal market compensation salary review"
+      ],
+      "lastUpdated": "2026-06-27T07:20:05.152Z"
+    }
+  },
+  {
+    "id": "EMP-0419",
+    "name": "Sarah Lin",
+    "email": "s.lin@enterprise.io",
+    "department": "R&D",
+    "jobRole": "Senior Software Engineer",
+    "gender": "Female",
+    "features": {
+      "age": 28,
+      "distanceFromHome": 4,
+      "monthlyIncome": 8900,
+      "overTime": 0,
+      "jobSatisfaction": 4,
+      "environmentSatisfaction": 4,
+      "workLifeBalance": 3,
+      "yearsAtCompany": 4,
+      "yearsInCurrentRole": 2,
+      "yearsSinceLastPromotion": 1,
+      "stockOptionLevel": 1
+    },
+    "actualAttrition": 0,
+    "riskProbability": 0.035427076880051055,
+    "shapValues": {
+      "jobSatisfaction": 0.24540508443975667
+    },
+    "itdoStatus": "Insight",
+    "itdoDetails": {
+      "triggerAlert": "",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [],
+      "lastUpdated": "2026-06-27T07:20:05.152Z"
+    }
+  },
+  {
+    "id": "EMP-0072",
+    "name": "Derrick Jenkins",
+    "email": "d.jenkins@enterprise.io",
+    "department": "Sales",
+    "jobRole": "Enterprise Sales Director",
+    "gender": "Male",
+    "features": {
+      "age": 41,
+      "distanceFromHome": 28,
+      "monthlyIncome": 16500,
+      "overTime": 1,
+      "jobSatisfaction": 1,
+      "environmentSatisfaction": 2,
+      "workLifeBalance": 1,
+      "yearsAtCompany": 6,
+      "yearsInCurrentRole": 4,
+      "yearsSinceLastPromotion": 5,
+      "stockOptionLevel": 0
+    },
+    "actualAttrition": 1,
+    "riskProbability": 0.9261488491720338,
+    "shapValues": {
+      "jobSatisfaction": 0.6478697391526573
+    },
+    "itdoStatus": "Trigger",
+    "itdoDetails": {
+      "triggerAlert": "Overwork & Burnout Alert: Continuous overtime paired with severe Work-Life imbalance.",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [
+        "Establish formal 1-on-1 retention review",
+        "Conduct internal market compensation salary review"
+      ],
+      "lastUpdated": "2026-06-27T07:20:05.152Z"
+    }
+  },
+  {
+    "id": "EMP-0922",
+    "name": "Elena Rostova",
+    "email": "e.rostova@enterprise.io",
+    "department": "Sales",
+    "jobRole": "Senior Account Executive",
+    "gender": "Female",
+    "features": {
+      "age": 31,
+      "distanceFromHome": 12,
+      "monthlyIncome": 7500,
+      "overTime": 1,
+      "jobSatisfaction": 2,
+      "environmentSatisfaction": 3,
+      "workLifeBalance": 2,
+      "yearsAtCompany": 2,
+      "yearsInCurrentRole": 1,
+      "yearsSinceLastPromotion": 2,
+      "stockOptionLevel": 0
+    },
+    "actualAttrition": 1,
+    "riskProbability": 0.9261488491720338,
+    "shapValues": {
+      "jobSatisfaction": 0.6478697391526573
+    },
+    "itdoStatus": "Trigger",
+    "itdoDetails": {
+      "triggerAlert": "Overwork & Burnout Alert: Continuous overtime paired with severe Work-Life imbalance.",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [
+        "Establish formal 1-on-1 retention review",
+        "Conduct internal market compensation salary review"
+      ],
+      "lastUpdated": "2026-06-27T07:20:05.152Z"
+    }
+  },
+  {
+    "id": "EMP-0144",
+    "name": "Aisha Taylor",
+    "email": "a.taylor@enterprise.io",
+    "department": "HR",
+    "jobRole": "HR Business Partner",
+    "gender": "Female",
+    "features": {
+      "age": 38,
+      "distanceFromHome": 2,
+      "monthlyIncome": 9200,
+      "overTime": 0,
+      "jobSatisfaction": 4,
+      "environmentSatisfaction": 4,
+      "workLifeBalance": 4,
+      "yearsAtCompany": 8,
+      "yearsInCurrentRole": 5,
+      "yearsSinceLastPromotion": 2,
+      "stockOptionLevel": 2
+    },
+    "actualAttrition": 0,
+    "riskProbability": 0.035427076880051055,
+    "shapValues": {
+      "jobSatisfaction": 0.24540508443975667
+    },
+    "itdoStatus": "Insight",
+    "itdoDetails": {
+      "triggerAlert": "",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [],
+      "lastUpdated": "2026-06-27T07:20:05.152Z"
+    }
+  },
+  {
+    "id": "EMP-0310",
+    "name": "Carlos Gomez",
+    "email": "c.gomez@enterprise.io",
+    "department": "R&D",
+    "jobRole": "QA Automation Engineer",
+    "gender": "Male",
+    "features": {
+      "age": 25,
+      "distanceFromHome": 18,
+      "monthlyIncome": 4200,
+      "overTime": 1,
+      "jobSatisfaction": 2,
+      "environmentSatisfaction": 2,
+      "workLifeBalance": 2,
+      "yearsAtCompany": 1,
+      "yearsInCurrentRole": 1,
+      "yearsSinceLastPromotion": 1,
+      "stockOptionLevel": 0
+    },
+    "actualAttrition": 1,
+    "riskProbability": 0.9261488491720338,
+    "shapValues": {
+      "jobSatisfaction": 0.6478697391526573
+    },
+    "itdoStatus": "Trigger",
+    "itdoDetails": {
+      "triggerAlert": "Overwork & Burnout Alert: Continuous overtime paired with severe Work-Life imbalance.",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [
+        "Establish formal 1-on-1 retention review",
+        "Conduct internal market compensation salary review"
+      ],
+      "lastUpdated": "2026-06-27T07:20:05.152Z"
+    }
+  },
+  {
+    "id": "EMP-0881",
+    "name": "Naomi Takahashi",
+    "email": "n.takahashi@enterprise.io",
+    "department": "R&D",
+    "jobRole": "Staff AI Researcher",
+    "gender": "Female",
+    "features": {
+      "age": 36,
+      "distanceFromHome": 6,
+      "monthlyIncome": 18500,
+      "overTime": 0,
+      "jobSatisfaction": 4,
+      "environmentSatisfaction": 4,
+      "workLifeBalance": 3,
+      "yearsAtCompany": 5,
+      "yearsInCurrentRole": 3,
+      "yearsSinceLastPromotion": 1,
+      "stockOptionLevel": 3
+    },
+    "actualAttrition": 0,
+    "riskProbability": 0.035427076880051055,
+    "shapValues": {
+      "jobSatisfaction": 0.24540508443975667
+    },
+    "itdoStatus": "Insight",
+    "itdoDetails": {
+      "triggerAlert": "",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [],
+      "lastUpdated": "2026-06-27T07:20:05.152Z"
+    }
+  },
+  {
+    "id": "EMP-0511",
+    "name": "Liam O'Connor",
+    "email": "l.oconnor@enterprise.io",
+    "department": "Sales",
+    "jobRole": "Sales Executive",
+    "gender": "Male",
+    "features": {
+      "age": 29,
+      "distanceFromHome": 15,
+      "monthlyIncome": 6100,
+      "overTime": 1,
+      "jobSatisfaction": 3,
+      "environmentSatisfaction": 2,
+      "workLifeBalance": 2,
+      "yearsAtCompany": 3,
+      "yearsInCurrentRole": 2,
+      "yearsSinceLastPromotion": 3,
+      "stockOptionLevel": 0
+    },
+    "actualAttrition": 0,
+    "riskProbability": 0.035427076880051055,
+    "shapValues": {
+      "jobSatisfaction": 0.24540508443975667
+    },
+    "itdoStatus": "Insight",
+    "itdoDetails": {
+      "triggerAlert": "",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [],
+      "lastUpdated": "2026-06-27T07:20:05.152Z"
+    }
+  },
+  {
+    "id": "EMP-0294",
+    "name": "Dr. Chloe Mehta",
+    "email": "c.mehta@enterprise.io",
+    "department": "R&D",
+    "jobRole": "Principal Data Scientist",
+    "gender": "Female",
+    "features": {
+      "age": 45,
+      "distanceFromHome": 5,
+      "monthlyIncome": 17200,
+      "overTime": 0,
+      "jobSatisfaction": 3,
+      "environmentSatisfaction": 3,
+      "workLifeBalance": 3,
+      "yearsAtCompany": 10,
+      "yearsInCurrentRole": 6,
+      "yearsSinceLastPromotion": 4,
+      "stockOptionLevel": 2
+    },
+    "actualAttrition": 0,
+    "riskProbability": 0.035427076880051055,
+    "shapValues": {
+      "jobSatisfaction": 0.24540508443975667
+    },
+    "itdoStatus": "Insight",
+    "itdoDetails": {
+      "triggerAlert": "",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [],
+      "lastUpdated": "2026-06-27T07:20:05.152Z"
+    }
+  },
+  {
+    "id": "EMP-0331",
+    "name": "Michael Chang",
+    "email": "m.chang@enterprise.io",
+    "department": "R&D",
+    "jobRole": "DevOps Engineer",
+    "gender": "Male",
+    "features": {
+      "age": 30,
+      "distanceFromHome": 25,
+      "monthlyIncome": 8100,
+      "overTime": 1,
+      "jobSatisfaction": 2,
+      "environmentSatisfaction": 2,
+      "workLifeBalance": 1,
+      "yearsAtCompany": 2,
+      "yearsInCurrentRole": 2,
+      "yearsSinceLastPromotion": 2,
+      "stockOptionLevel": 0
+    },
+    "actualAttrition": 1,
+    "riskProbability": 0.9261488491720338,
+    "shapValues": {
+      "jobSatisfaction": 0.6478697391526573
+    },
+    "itdoStatus": "Trigger",
+    "itdoDetails": {
+      "triggerAlert": "Overwork & Burnout Alert: Continuous overtime paired with severe Work-Life imbalance.",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [
+        "Establish formal 1-on-1 retention review",
+        "Conduct internal market compensation salary review"
+      ],
+      "lastUpdated": "2026-06-27T07:20:05.153Z"
+    }
+  },
+  {
+    "id": "EMP-0604",
+    "name": "Hannah Abbot",
+    "email": "h.abbot@enterprise.io",
+    "department": "HR",
+    "jobRole": "Talent Acquisition Specialist",
+    "gender": "Female",
+    "features": {
+      "age": 27,
+      "distanceFromHome": 8,
+      "monthlyIncome": 4900,
+      "overTime": 0,
+      "jobSatisfaction": 3,
+      "environmentSatisfaction": 3,
+      "workLifeBalance": 3,
+      "yearsAtCompany": 2,
+      "yearsInCurrentRole": 1,
+      "yearsSinceLastPromotion": 1,
+      "stockOptionLevel": 1
+    },
+    "actualAttrition": 0,
+    "riskProbability": 0.035427076880051055,
+    "shapValues": {
+      "jobSatisfaction": 0.24540508443975667
+    },
+    "itdoStatus": "Insight",
+    "itdoDetails": {
+      "triggerAlert": "",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [],
+      "lastUpdated": "2026-06-27T07:20:05.153Z"
+    }
+  },
+  {
+    "id": "EMP-0715",
+    "name": "James Wilson",
+    "email": "j.wilson@enterprise.io",
+    "department": "Sales",
+    "jobRole": "Sales Associate",
+    "gender": "Male",
+    "features": {
+      "age": 24,
+      "distanceFromHome": 30,
+      "monthlyIncome": 3500,
+      "overTime": 1,
+      "jobSatisfaction": 1,
+      "environmentSatisfaction": 1,
+      "workLifeBalance": 2,
+      "yearsAtCompany": 1,
+      "yearsInCurrentRole": 1,
+      "yearsSinceLastPromotion": 1,
+      "stockOptionLevel": 0
+    },
+    "actualAttrition": 1,
+    "riskProbability": 0.9261488491720338,
+    "shapValues": {
+      "jobSatisfaction": 0.6478697391526573
+    },
+    "itdoStatus": "Trigger",
+    "itdoDetails": {
+      "triggerAlert": "Overwork & Burnout Alert: Continuous overtime paired with severe Work-Life imbalance.",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [
+        "Establish formal 1-on-1 retention review",
+        "Conduct internal market compensation salary review"
+      ],
+      "lastUpdated": "2026-06-27T07:20:05.153Z"
+    }
+  },
+  {
+    "id": "EMP-0950",
+    "name": "Grace Hopper",
+    "email": "grace.hopper@enterprise.io",
+    "department": "R&D",
+    "jobRole": "Software Engineer",
+    "gender": "Female",
+    "features": {
+      "age": 22,
+      "distanceFromHome": 18,
+      "monthlyIncome": 3500,
+      "overTime": 1,
+      "jobSatisfaction": 1,
+      "environmentSatisfaction": 1,
+      "workLifeBalance": 1,
+      "yearsAtCompany": 1,
+      "yearsInCurrentRole": 0,
+      "yearsSinceLastPromotion": 2,
+      "stockOptionLevel": 0
+    },
+    "actualAttrition": 1,
+    "riskProbability": 0.9261488491720338,
+    "shapValues": {
+      "jobSatisfaction": 0.6478697391526573
+    },
+    "itdoStatus": "Trigger",
+    "itdoDetails": {
+      "triggerAlert": "Overwork & Burnout Alert: Continuous overtime paired with severe Work-Life imbalance.",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [
+        "Establish formal 1-on-1 retention review",
+        "Conduct internal market compensation salary review"
+      ],
+      "lastUpdated": "2026-06-27T07:20:05.153Z"
+    }
+  },
+  {
+    "id": "EMP-0951",
+    "name": "Alan Turing",
+    "email": "alan.turing@enterprise.io",
+    "department": "Sales",
+    "jobRole": "Sales Development Rep",
+    "gender": "Male",
+    "features": {
+      "age": 23,
+      "distanceFromHome": 3,
+      "monthlyIncome": 6750,
+      "overTime": 0,
+      "jobSatisfaction": 4,
+      "environmentSatisfaction": 3,
+      "workLifeBalance": 3,
+      "yearsAtCompany": 5,
+      "yearsInCurrentRole": 3,
+      "yearsSinceLastPromotion": 1,
+      "stockOptionLevel": 2
+    },
+    "actualAttrition": 0,
+    "riskProbability": 0.035427076880051055,
+    "shapValues": {
+      "jobSatisfaction": 0.24540508443975667
+    },
+    "itdoStatus": "Insight",
+    "itdoDetails": {
+      "triggerAlert": "",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [],
+      "lastUpdated": "2026-06-27T07:20:05.153Z"
+    }
+  },
+  {
+    "id": "EMP-0952",
+    "name": "Ada Lovelace",
+    "email": "ada.lovelace@enterprise.io",
+    "department": "HR",
+    "jobRole": "HR Generalist",
+    "gender": "Female",
+    "features": {
+      "age": 24,
+      "distanceFromHome": 4,
+      "monthlyIncome": 7000,
+      "overTime": 0,
+      "jobSatisfaction": 3,
+      "environmentSatisfaction": 3,
+      "workLifeBalance": 3,
+      "yearsAtCompany": 6,
+      "yearsInCurrentRole": 4,
+      "yearsSinceLastPromotion": 2,
+      "stockOptionLevel": 3
+    },
+    "actualAttrition": 0,
+    "riskProbability": 0.035427076880051055,
+    "shapValues": {
+      "jobSatisfaction": 0.24540508443975667
+    },
+    "itdoStatus": "Insight",
+    "itdoDetails": {
+      "triggerAlert": "",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [],
+      "lastUpdated": "2026-06-27T07:20:05.153Z"
+    }
+  },
+  {
+    "id": "EMP-0953",
+    "name": "Donald Knuth",
+    "email": "donald.knuth@enterprise.io",
+    "department": "R&D",
+    "jobRole": "Systems Researcher",
+    "gender": "Male",
+    "features": {
+      "age": 25,
+      "distanceFromHome": 5,
+      "monthlyIncome": 7250,
+      "overTime": 1,
+      "jobSatisfaction": 4,
+      "environmentSatisfaction": 3,
+      "workLifeBalance": 3,
+      "yearsAtCompany": 7,
+      "yearsInCurrentRole": 4,
+      "yearsSinceLastPromotion": 0,
+      "stockOptionLevel": 1
+    },
+    "actualAttrition": 0,
+    "riskProbability": 0.035427076880051055,
+    "shapValues": {
+      "jobSatisfaction": 0.24540508443975667
+    },
+    "itdoStatus": "Insight",
+    "itdoDetails": {
+      "triggerAlert": "",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [],
+      "lastUpdated": "2026-06-27T07:20:05.153Z"
+    }
+  },
+  {
+    "id": "EMP-0954",
+    "name": "Linus Torvalds",
+    "email": "linus.torvalds@enterprise.io",
+    "department": "Sales",
+    "jobRole": "Account Executive",
+    "gender": "Female",
+    "features": {
+      "age": 26,
+      "distanceFromHome": 22,
+      "monthlyIncome": 3900,
+      "overTime": 1,
+      "jobSatisfaction": 1,
+      "environmentSatisfaction": 1,
+      "workLifeBalance": 1,
+      "yearsAtCompany": 1,
+      "yearsInCurrentRole": 0,
+      "yearsSinceLastPromotion": 3,
+      "stockOptionLevel": 0
+    },
+    "actualAttrition": 1,
+    "riskProbability": 0.9261488491720338,
+    "shapValues": {
+      "jobSatisfaction": 0.6478697391526573
+    },
+    "itdoStatus": "Trigger",
+    "itdoDetails": {
+      "triggerAlert": "Overwork & Burnout Alert: Continuous overtime paired with severe Work-Life imbalance.",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [
+        "Establish formal 1-on-1 retention review",
+        "Conduct internal market compensation salary review"
+      ],
+      "lastUpdated": "2026-06-27T07:20:05.153Z"
+    }
+  },
+  {
+    "id": "EMP-0955",
+    "name": "Ken Thompson",
+    "email": "ken.thompson@enterprise.io",
+    "department": "HR",
+    "jobRole": "L&D Coordinator",
+    "gender": "Male",
+    "features": {
+      "age": 27,
+      "distanceFromHome": 7,
+      "monthlyIncome": 7750,
+      "overTime": 0,
+      "jobSatisfaction": 4,
+      "environmentSatisfaction": 3,
+      "workLifeBalance": 3,
+      "yearsAtCompany": 9,
+      "yearsInCurrentRole": 6,
+      "yearsSinceLastPromotion": 2,
+      "stockOptionLevel": 3
+    },
+    "actualAttrition": 0,
+    "riskProbability": 0.035427076880051055,
+    "shapValues": {
+      "jobSatisfaction": 0.24540508443975667
+    },
+    "itdoStatus": "Insight",
+    "itdoDetails": {
+      "triggerAlert": "",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [],
+      "lastUpdated": "2026-06-27T07:20:05.153Z"
+    }
+  },
+  {
+    "id": "EMP-0956",
+    "name": "Dennis Ritchie",
+    "email": "dennis.ritchie@enterprise.io",
+    "department": "R&D",
+    "jobRole": "Software Engineer",
+    "gender": "Female",
+    "features": {
+      "age": 28,
+      "distanceFromHome": 8,
+      "monthlyIncome": 8000,
+      "overTime": 1,
+      "jobSatisfaction": 3,
+      "environmentSatisfaction": 3,
+      "workLifeBalance": 3,
+      "yearsAtCompany": 10,
+      "yearsInCurrentRole": 7,
+      "yearsSinceLastPromotion": 0,
+      "stockOptionLevel": 1
+    },
+    "actualAttrition": 0,
+    "riskProbability": 0.035427076880051055,
+    "shapValues": {
+      "jobSatisfaction": 0.24540508443975667
+    },
+    "itdoStatus": "Insight",
+    "itdoDetails": {
+      "triggerAlert": "",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [],
+      "lastUpdated": "2026-06-27T07:20:05.153Z"
+    }
+  },
+  {
+    "id": "EMP-0957",
+    "name": "Margaret Hamilton",
+    "email": "margaret.hamilton@enterprise.io",
+    "department": "Sales",
+    "jobRole": "Sales Development Rep",
+    "gender": "Male",
+    "features": {
+      "age": 29,
+      "distanceFromHome": 9,
+      "monthlyIncome": 8250,
+      "overTime": 0,
+      "jobSatisfaction": 4,
+      "environmentSatisfaction": 3,
+      "workLifeBalance": 3,
+      "yearsAtCompany": 11,
+      "yearsInCurrentRole": 7,
+      "yearsSinceLastPromotion": 1,
+      "stockOptionLevel": 2
+    },
+    "actualAttrition": 0,
+    "riskProbability": 0.035427076880051055,
+    "shapValues": {
+      "jobSatisfaction": 0.24540508443975667
+    },
+    "itdoStatus": "Insight",
+    "itdoDetails": {
+      "triggerAlert": "",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [],
+      "lastUpdated": "2026-06-27T07:20:05.153Z"
+    }
+  },
+  {
+    "id": "EMP-0958",
+    "name": "Barbara Liskov",
+    "email": "barbara.liskov@enterprise.io",
+    "department": "HR",
+    "jobRole": "HR Generalist",
+    "gender": "Female",
+    "features": {
+      "age": 30,
+      "distanceFromHome": 26,
+      "monthlyIncome": 4300,
+      "overTime": 1,
+      "jobSatisfaction": 1,
+      "environmentSatisfaction": 1,
+      "workLifeBalance": 1,
+      "yearsAtCompany": 1,
+      "yearsInCurrentRole": 0,
+      "yearsSinceLastPromotion": 4,
+      "stockOptionLevel": 0
+    },
+    "actualAttrition": 1,
+    "riskProbability": 0.9261488491720338,
+    "shapValues": {
+      "jobSatisfaction": 0.6478697391526573
+    },
+    "itdoStatus": "Trigger",
+    "itdoDetails": {
+      "triggerAlert": "Overwork & Burnout Alert: Continuous overtime paired with severe Work-Life imbalance.",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [
+        "Establish formal 1-on-1 retention review",
+        "Conduct internal market compensation salary review"
+      ],
+      "lastUpdated": "2026-06-27T07:20:05.153Z"
+    }
+  },
+  {
+    "id": "EMP-0959",
+    "name": "Guido van Rossum",
+    "email": "guido.van rossum@enterprise.io",
+    "department": "R&D",
+    "jobRole": "Systems Researcher",
+    "gender": "Male",
+    "features": {
+      "age": 31,
+      "distanceFromHome": 11,
+      "monthlyIncome": 8750,
+      "overTime": 1,
+      "jobSatisfaction": 4,
+      "environmentSatisfaction": 3,
+      "workLifeBalance": 3,
+      "yearsAtCompany": 13,
+      "yearsInCurrentRole": 9,
+      "yearsSinceLastPromotion": 0,
+      "stockOptionLevel": 1
+    },
+    "actualAttrition": 0,
+    "riskProbability": 0.035427076880051055,
+    "shapValues": {
+      "jobSatisfaction": 0.24540508443975667
+    },
+    "itdoStatus": "Insight",
+    "itdoDetails": {
+      "triggerAlert": "",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [],
+      "lastUpdated": "2026-06-27T07:20:05.153Z"
+    }
+  },
+  {
+    "id": "EMP-0960",
+    "name": "Bjarne Stroustrup",
+    "email": "bjarne.stroustrup@enterprise.io",
+    "department": "Sales",
+    "jobRole": "Account Executive",
+    "gender": "Female",
+    "features": {
+      "age": 32,
+      "distanceFromHome": 12,
+      "monthlyIncome": 9000,
+      "overTime": 0,
+      "jobSatisfaction": 3,
+      "environmentSatisfaction": 3,
+      "workLifeBalance": 3,
+      "yearsAtCompany": 4,
+      "yearsInCurrentRole": 2,
+      "yearsSinceLastPromotion": 1,
+      "stockOptionLevel": 2
+    },
+    "actualAttrition": 0,
+    "riskProbability": 0.035427076880051055,
+    "shapValues": {
+      "jobSatisfaction": 0.24540508443975667
+    },
+    "itdoStatus": "Insight",
+    "itdoDetails": {
+      "triggerAlert": "",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [],
+      "lastUpdated": "2026-06-27T07:20:05.153Z"
+    }
+  },
+  {
+    "id": "EMP-0961",
+    "name": "Tim Berners-Lee",
+    "email": "tim.berners-lee@enterprise.io",
+    "department": "HR",
+    "jobRole": "L&D Coordinator",
+    "gender": "Male",
+    "features": {
+      "age": 33,
+      "distanceFromHome": 13,
+      "monthlyIncome": 9250,
+      "overTime": 0,
+      "jobSatisfaction": 4,
+      "environmentSatisfaction": 3,
+      "workLifeBalance": 3,
+      "yearsAtCompany": 5,
+      "yearsInCurrentRole": 3,
+      "yearsSinceLastPromotion": 2,
+      "stockOptionLevel": 3
+    },
+    "actualAttrition": 0,
+    "riskProbability": 0.035427076880051055,
+    "shapValues": {
+      "jobSatisfaction": 0.24540508443975667
+    },
+    "itdoStatus": "Insight",
+    "itdoDetails": {
+      "triggerAlert": "",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [],
+      "lastUpdated": "2026-06-27T07:20:05.153Z"
+    }
+  },
+  {
+    "id": "EMP-0962",
+    "name": "Richard Stallman",
+    "email": "richard.stallman@enterprise.io",
+    "department": "R&D",
+    "jobRole": "Software Engineer",
+    "gender": "Female",
+    "features": {
+      "age": 34,
+      "distanceFromHome": 18,
+      "monthlyIncome": 4700,
+      "overTime": 1,
+      "jobSatisfaction": 1,
+      "environmentSatisfaction": 1,
+      "workLifeBalance": 1,
+      "yearsAtCompany": 1,
+      "yearsInCurrentRole": 0,
+      "yearsSinceLastPromotion": 2,
+      "stockOptionLevel": 0
+    },
+    "actualAttrition": 1,
+    "riskProbability": 0.9261488491720338,
+    "shapValues": {
+      "jobSatisfaction": 0.6478697391526573
+    },
+    "itdoStatus": "Trigger",
+    "itdoDetails": {
+      "triggerAlert": "Overwork & Burnout Alert: Continuous overtime paired with severe Work-Life imbalance.",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [
+        "Establish formal 1-on-1 retention review",
+        "Conduct internal market compensation salary review"
+      ],
+      "lastUpdated": "2026-06-27T07:20:05.153Z"
+    }
+  },
+  {
+    "id": "EMP-0963",
+    "name": "James Gosling",
+    "email": "james.gosling@enterprise.io",
+    "department": "Sales",
+    "jobRole": "Sales Development Rep",
+    "gender": "Male",
+    "features": {
+      "age": 35,
+      "distanceFromHome": 3,
+      "monthlyIncome": 9750,
+      "overTime": 0,
+      "jobSatisfaction": 4,
+      "environmentSatisfaction": 3,
+      "workLifeBalance": 3,
+      "yearsAtCompany": 7,
+      "yearsInCurrentRole": 4,
+      "yearsSinceLastPromotion": 1,
+      "stockOptionLevel": 2
+    },
+    "actualAttrition": 0,
+    "riskProbability": 0.035427076880051055,
+    "shapValues": {
+      "jobSatisfaction": 0.24540508443975667
+    },
+    "itdoStatus": "Insight",
+    "itdoDetails": {
+      "triggerAlert": "",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [],
+      "lastUpdated": "2026-06-27T07:20:05.153Z"
+    }
+  },
+  {
+    "id": "EMP-0964",
+    "name": "Yukihiro Matsumoto",
+    "email": "yukihiro.matsumoto@enterprise.io",
+    "department": "HR",
+    "jobRole": "HR Generalist",
+    "gender": "Female",
+    "features": {
+      "age": 36,
+      "distanceFromHome": 4,
+      "monthlyIncome": 10000,
+      "overTime": 0,
+      "jobSatisfaction": 3,
+      "environmentSatisfaction": 3,
+      "workLifeBalance": 3,
+      "yearsAtCompany": 8,
+      "yearsInCurrentRole": 5,
+      "yearsSinceLastPromotion": 2,
+      "stockOptionLevel": 3
+    },
+    "actualAttrition": 0,
+    "riskProbability": 0.035427076880051055,
+    "shapValues": {
+      "jobSatisfaction": 0.24540508443975667
+    },
+    "itdoStatus": "Insight",
+    "itdoDetails": {
+      "triggerAlert": "",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [],
+      "lastUpdated": "2026-06-27T07:20:05.153Z"
+    }
+  },
+  {
+    "id": "EMP-0965",
+    "name": "John McCarthy",
+    "email": "john.mccarthy@enterprise.io",
+    "department": "R&D",
+    "jobRole": "Systems Researcher",
+    "gender": "Male",
+    "features": {
+      "age": 37,
+      "distanceFromHome": 5,
+      "monthlyIncome": 10250,
+      "overTime": 1,
+      "jobSatisfaction": 4,
+      "environmentSatisfaction": 3,
+      "workLifeBalance": 3,
+      "yearsAtCompany": 9,
+      "yearsInCurrentRole": 6,
+      "yearsSinceLastPromotion": 0,
+      "stockOptionLevel": 1
+    },
+    "actualAttrition": 0,
+    "riskProbability": 0.035427076880051055,
+    "shapValues": {
+      "jobSatisfaction": 0.24540508443975667
+    },
+    "itdoStatus": "Insight",
+    "itdoDetails": {
+      "triggerAlert": "",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [],
+      "lastUpdated": "2026-06-27T07:20:05.153Z"
+    }
+  },
+  {
+    "id": "EMP-0966",
+    "name": "Vint Cerf",
+    "email": "vint.cerf@enterprise.io",
+    "department": "Sales",
+    "jobRole": "Account Executive",
+    "gender": "Female",
+    "features": {
+      "age": 38,
+      "distanceFromHome": 22,
+      "monthlyIncome": 5100,
+      "overTime": 1,
+      "jobSatisfaction": 1,
+      "environmentSatisfaction": 1,
+      "workLifeBalance": 1,
+      "yearsAtCompany": 1,
+      "yearsInCurrentRole": 0,
+      "yearsSinceLastPromotion": 3,
+      "stockOptionLevel": 0
+    },
+    "actualAttrition": 1,
+    "riskProbability": 0.9261488491720338,
+    "shapValues": {
+      "jobSatisfaction": 0.6478697391526573
+    },
+    "itdoStatus": "Trigger",
+    "itdoDetails": {
+      "triggerAlert": "Overwork & Burnout Alert: Continuous overtime paired with severe Work-Life imbalance.",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [
+        "Establish formal 1-on-1 retention review",
+        "Conduct internal market compensation salary review"
+      ],
+      "lastUpdated": "2026-06-27T07:20:05.153Z"
+    }
+  },
+  {
+    "id": "EMP-0967",
+    "name": "Katherine Johnson",
+    "email": "katherine.johnson@enterprise.io",
+    "department": "HR",
+    "jobRole": "L&D Coordinator",
+    "gender": "Male",
+    "features": {
+      "age": 39,
+      "distanceFromHome": 7,
+      "monthlyIncome": 10750,
+      "overTime": 0,
+      "jobSatisfaction": 4,
+      "environmentSatisfaction": 3,
+      "workLifeBalance": 3,
+      "yearsAtCompany": 11,
+      "yearsInCurrentRole": 7,
+      "yearsSinceLastPromotion": 2,
+      "stockOptionLevel": 3
+    },
+    "actualAttrition": 0,
+    "riskProbability": 0.035427076880051055,
+    "shapValues": {
+      "jobSatisfaction": 0.24540508443975667
+    },
+    "itdoStatus": "Insight",
+    "itdoDetails": {
+      "triggerAlert": "",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [],
+      "lastUpdated": "2026-06-27T07:20:05.153Z"
+    }
+  },
+  {
+    "id": "EMP-0968",
+    "name": "Dorothy Vaughan",
+    "email": "dorothy.vaughan@enterprise.io",
+    "department": "R&D",
+    "jobRole": "Software Engineer",
+    "gender": "Female",
+    "features": {
+      "age": 40,
+      "distanceFromHome": 8,
+      "monthlyIncome": 11000,
+      "overTime": 1,
+      "jobSatisfaction": 3,
+      "environmentSatisfaction": 3,
+      "workLifeBalance": 3,
+      "yearsAtCompany": 12,
+      "yearsInCurrentRole": 8,
+      "yearsSinceLastPromotion": 0,
+      "stockOptionLevel": 1
+    },
+    "actualAttrition": 0,
+    "riskProbability": 0.035427076880051055,
+    "shapValues": {
+      "jobSatisfaction": 0.24540508443975667
+    },
+    "itdoStatus": "Insight",
+    "itdoDetails": {
+      "triggerAlert": "",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [],
+      "lastUpdated": "2026-06-27T07:20:05.153Z"
+    }
+  },
+  {
+    "id": "EMP-0969",
+    "name": "Mary Jackson",
+    "email": "mary.jackson@enterprise.io",
+    "department": "Sales",
+    "jobRole": "Sales Development Rep",
+    "gender": "Male",
+    "features": {
+      "age": 41,
+      "distanceFromHome": 9,
+      "monthlyIncome": 11250,
+      "overTime": 0,
+      "jobSatisfaction": 4,
+      "environmentSatisfaction": 3,
+      "workLifeBalance": 3,
+      "yearsAtCompany": 13,
+      "yearsInCurrentRole": 9,
+      "yearsSinceLastPromotion": 1,
+      "stockOptionLevel": 2
+    },
+    "actualAttrition": 0,
+    "riskProbability": 0.035427076880051055,
+    "shapValues": {
+      "jobSatisfaction": 0.24540508443975667
+    },
+    "itdoStatus": "Insight",
+    "itdoDetails": {
+      "triggerAlert": "",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [],
+      "lastUpdated": "2026-06-27T07:20:05.153Z"
+    }
+  },
+  {
+    "id": "EMP-0970",
+    "name": "Robert Kahn",
+    "email": "robert.kahn@enterprise.io",
+    "department": "HR",
+    "jobRole": "HR Generalist",
+    "gender": "Female",
+    "features": {
+      "age": 42,
+      "distanceFromHome": 26,
+      "monthlyIncome": 5500,
+      "overTime": 1,
+      "jobSatisfaction": 1,
+      "environmentSatisfaction": 1,
+      "workLifeBalance": 1,
+      "yearsAtCompany": 1,
+      "yearsInCurrentRole": 0,
+      "yearsSinceLastPromotion": 4,
+      "stockOptionLevel": 0
+    },
+    "actualAttrition": 1,
+    "riskProbability": 0.9261488491720338,
+    "shapValues": {
+      "jobSatisfaction": 0.6478697391526573
+    },
+    "itdoStatus": "Trigger",
+    "itdoDetails": {
+      "triggerAlert": "Overwork & Burnout Alert: Continuous overtime paired with severe Work-Life imbalance.",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [
+        "Establish formal 1-on-1 retention review",
+        "Conduct internal market compensation salary review"
+      ],
+      "lastUpdated": "2026-06-27T07:20:05.153Z"
+    }
+  },
+  {
+    "id": "EMP-0971",
+    "name": "Thomas Watson",
+    "email": "thomas.watson@enterprise.io",
+    "department": "R&D",
+    "jobRole": "Systems Researcher",
+    "gender": "Male",
+    "features": {
+      "age": 43,
+      "distanceFromHome": 11,
+      "monthlyIncome": 11750,
+      "overTime": 1,
+      "jobSatisfaction": 4,
+      "environmentSatisfaction": 3,
+      "workLifeBalance": 3,
+      "yearsAtCompany": 5,
+      "yearsInCurrentRole": 3,
+      "yearsSinceLastPromotion": 0,
+      "stockOptionLevel": 1
+    },
+    "actualAttrition": 0,
+    "riskProbability": 0.035427076880051055,
+    "shapValues": {
+      "jobSatisfaction": 0.24540508443975667
+    },
+    "itdoStatus": "Insight",
+    "itdoDetails": {
+      "triggerAlert": "",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [],
+      "lastUpdated": "2026-06-27T07:20:05.153Z"
+    }
+  },
+  {
+    "id": "EMP-0972",
+    "name": "Grace Murray",
+    "email": "grace.murray@enterprise.io",
+    "department": "Sales",
+    "jobRole": "Account Executive",
+    "gender": "Female",
+    "features": {
+      "age": 44,
+      "distanceFromHome": 12,
+      "monthlyIncome": 12000,
+      "overTime": 0,
+      "jobSatisfaction": 3,
+      "environmentSatisfaction": 3,
+      "workLifeBalance": 3,
+      "yearsAtCompany": 6,
+      "yearsInCurrentRole": 4,
+      "yearsSinceLastPromotion": 1,
+      "stockOptionLevel": 2
+    },
+    "actualAttrition": 0,
+    "riskProbability": 0.035427076880051055,
+    "shapValues": {
+      "jobSatisfaction": 0.24540508443975667
+    },
+    "itdoStatus": "Insight",
+    "itdoDetails": {
+      "triggerAlert": "",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [],
+      "lastUpdated": "2026-06-27T07:20:05.153Z"
+    }
+  },
+  {
+    "id": "EMP-0973",
+    "name": "Seymour Cray",
+    "email": "seymour.cray@enterprise.io",
+    "department": "HR",
+    "jobRole": "L&D Coordinator",
+    "gender": "Male",
+    "features": {
+      "age": 45,
+      "distanceFromHome": 13,
+      "monthlyIncome": 12250,
+      "overTime": 0,
+      "jobSatisfaction": 4,
+      "environmentSatisfaction": 3,
+      "workLifeBalance": 3,
+      "yearsAtCompany": 7,
+      "yearsInCurrentRole": 4,
+      "yearsSinceLastPromotion": 2,
+      "stockOptionLevel": 3
+    },
+    "actualAttrition": 0,
+    "riskProbability": 0.035427076880051055,
+    "shapValues": {
+      "jobSatisfaction": 0.24540508443975667
+    },
+    "itdoStatus": "Insight",
+    "itdoDetails": {
+      "triggerAlert": "",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [],
+      "lastUpdated": "2026-06-27T07:20:05.153Z"
+    }
+  },
+  {
+    "id": "EMP-0974",
+    "name": "Edger Dijkstra",
+    "email": "edger.dijkstra@enterprise.io",
+    "department": "R&D",
+    "jobRole": "Software Engineer",
+    "gender": "Female",
+    "features": {
+      "age": 46,
+      "distanceFromHome": 18,
+      "monthlyIncome": 5900,
+      "overTime": 1,
+      "jobSatisfaction": 1,
+      "environmentSatisfaction": 1,
+      "workLifeBalance": 1,
+      "yearsAtCompany": 1,
+      "yearsInCurrentRole": 0,
+      "yearsSinceLastPromotion": 2,
+      "stockOptionLevel": 0
+    },
+    "actualAttrition": 1,
+    "riskProbability": 0.9261488491720338,
+    "shapValues": {
+      "jobSatisfaction": 0.6478697391526573
+    },
+    "itdoStatus": "Trigger",
+    "itdoDetails": {
+      "triggerAlert": "Overwork & Burnout Alert: Continuous overtime paired with severe Work-Life imbalance.",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [
+        "Establish formal 1-on-1 retention review",
+        "Conduct internal market compensation salary review"
+      ],
+      "lastUpdated": "2026-06-27T07:20:05.153Z"
+    }
+  },
+  {
+    "id": "EMP-0975",
+    "name": "Claude Shannon",
+    "email": "claude.shannon@enterprise.io",
+    "department": "Sales",
+    "jobRole": "Sales Development Rep",
+    "gender": "Male",
+    "features": {
+      "age": 22,
+      "distanceFromHome": 3,
+      "monthlyIncome": 12750,
+      "overTime": 0,
+      "jobSatisfaction": 4,
+      "environmentSatisfaction": 3,
+      "workLifeBalance": 3,
+      "yearsAtCompany": 9,
+      "yearsInCurrentRole": 6,
+      "yearsSinceLastPromotion": 1,
+      "stockOptionLevel": 2
+    },
+    "actualAttrition": 0,
+    "riskProbability": 0.035427076880051055,
+    "shapValues": {
+      "jobSatisfaction": 0.24540508443975667
+    },
+    "itdoStatus": "Insight",
+    "itdoDetails": {
+      "triggerAlert": "",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [],
+      "lastUpdated": "2026-06-27T07:20:05.153Z"
+    }
+  },
+  {
+    "id": "EMP-0976",
+    "name": "Stephen Hawking",
+    "email": "stephen.hawking@enterprise.io",
+    "department": "HR",
+    "jobRole": "HR Generalist",
+    "gender": "Female",
+    "features": {
+      "age": 23,
+      "distanceFromHome": 4,
+      "monthlyIncome": 13000,
+      "overTime": 0,
+      "jobSatisfaction": 3,
+      "environmentSatisfaction": 3,
+      "workLifeBalance": 3,
+      "yearsAtCompany": 10,
+      "yearsInCurrentRole": 7,
+      "yearsSinceLastPromotion": 2,
+      "stockOptionLevel": 3
+    },
+    "actualAttrition": 0,
+    "riskProbability": 0.035427076880051055,
+    "shapValues": {
+      "jobSatisfaction": 0.24540508443975667
+    },
+    "itdoStatus": "Insight",
+    "itdoDetails": {
+      "triggerAlert": "",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [],
+      "lastUpdated": "2026-06-27T07:20:05.153Z"
+    }
+  },
+  {
+    "id": "EMP-0977",
+    "name": "Albert Einstein",
+    "email": "albert.einstein@enterprise.io",
+    "department": "R&D",
+    "jobRole": "Systems Researcher",
+    "gender": "Male",
+    "features": {
+      "age": 24,
+      "distanceFromHome": 5,
+      "monthlyIncome": 13250,
+      "overTime": 1,
+      "jobSatisfaction": 4,
+      "environmentSatisfaction": 3,
+      "workLifeBalance": 3,
+      "yearsAtCompany": 11,
+      "yearsInCurrentRole": 7,
+      "yearsSinceLastPromotion": 0,
+      "stockOptionLevel": 1
+    },
+    "actualAttrition": 0,
+    "riskProbability": 0.035427076880051055,
+    "shapValues": {
+      "jobSatisfaction": 0.24540508443975667
+    },
+    "itdoStatus": "Insight",
+    "itdoDetails": {
+      "triggerAlert": "",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [],
+      "lastUpdated": "2026-06-27T07:20:05.153Z"
+    }
+  },
+  {
+    "id": "EMP-0978",
+    "name": "Marie Curie",
+    "email": "marie.curie@enterprise.io",
+    "department": "Sales",
+    "jobRole": "Account Executive",
+    "gender": "Female",
+    "features": {
+      "age": 25,
+      "distanceFromHome": 22,
+      "monthlyIncome": 6300,
+      "overTime": 1,
+      "jobSatisfaction": 1,
+      "environmentSatisfaction": 1,
+      "workLifeBalance": 1,
+      "yearsAtCompany": 1,
+      "yearsInCurrentRole": 0,
+      "yearsSinceLastPromotion": 3,
+      "stockOptionLevel": 0
+    },
+    "actualAttrition": 1,
+    "riskProbability": 0.9261488491720338,
+    "shapValues": {
+      "jobSatisfaction": 0.6478697391526573
+    },
+    "itdoStatus": "Trigger",
+    "itdoDetails": {
+      "triggerAlert": "Overwork & Burnout Alert: Continuous overtime paired with severe Work-Life imbalance.",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [
+        "Establish formal 1-on-1 retention review",
+        "Conduct internal market compensation salary review"
+      ],
+      "lastUpdated": "2026-06-27T07:20:05.153Z"
+    }
+  },
+  {
+    "id": "EMP-0979",
+    "name": "Nikola Tesla",
+    "email": "nikola.tesla@enterprise.io",
+    "department": "HR",
+    "jobRole": "L&D Coordinator",
+    "gender": "Male",
+    "features": {
+      "age": 26,
+      "distanceFromHome": 7,
+      "monthlyIncome": 13750,
+      "overTime": 0,
+      "jobSatisfaction": 4,
+      "environmentSatisfaction": 3,
+      "workLifeBalance": 3,
+      "yearsAtCompany": 13,
+      "yearsInCurrentRole": 9,
+      "yearsSinceLastPromotion": 2,
+      "stockOptionLevel": 3
+    },
+    "actualAttrition": 0,
+    "riskProbability": 0.035427076880051055,
+    "shapValues": {
+      "jobSatisfaction": 0.24540508443975667
+    },
+    "itdoStatus": "Insight",
+    "itdoDetails": {
+      "triggerAlert": "",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [],
+      "lastUpdated": "2026-06-27T07:20:05.153Z"
+    }
+  },
+  {
+    "id": "EMP-0980",
+    "name": "Isaac Newton",
+    "email": "isaac.newton@enterprise.io",
+    "department": "R&D",
+    "jobRole": "Software Engineer",
+    "gender": "Female",
+    "features": {
+      "age": 27,
+      "distanceFromHome": 8,
+      "monthlyIncome": 14000,
+      "overTime": 1,
+      "jobSatisfaction": 3,
+      "environmentSatisfaction": 3,
+      "workLifeBalance": 3,
+      "yearsAtCompany": 4,
+      "yearsInCurrentRole": 2,
+      "yearsSinceLastPromotion": 0,
+      "stockOptionLevel": 1
+    },
+    "actualAttrition": 0,
+    "riskProbability": 0.035427076880051055,
+    "shapValues": {
+      "jobSatisfaction": 0.24540508443975667
+    },
+    "itdoStatus": "Insight",
+    "itdoDetails": {
+      "triggerAlert": "",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [],
+      "lastUpdated": "2026-06-27T07:20:05.154Z"
+    }
+  },
+  {
+    "id": "EMP-0981",
+    "name": "Charles Darwin",
+    "email": "charles.darwin@enterprise.io",
+    "department": "Sales",
+    "jobRole": "Sales Development Rep",
+    "gender": "Male",
+    "features": {
+      "age": 28,
+      "distanceFromHome": 9,
+      "monthlyIncome": 14250,
+      "overTime": 0,
+      "jobSatisfaction": 4,
+      "environmentSatisfaction": 3,
+      "workLifeBalance": 3,
+      "yearsAtCompany": 5,
+      "yearsInCurrentRole": 3,
+      "yearsSinceLastPromotion": 1,
+      "stockOptionLevel": 2
+    },
+    "actualAttrition": 0,
+    "riskProbability": 0.035427076880051055,
+    "shapValues": {
+      "jobSatisfaction": 0.24540508443975667
+    },
+    "itdoStatus": "Insight",
+    "itdoDetails": {
+      "triggerAlert": "",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [],
+      "lastUpdated": "2026-06-27T07:20:05.154Z"
+    }
+  },
+  {
+    "id": "EMP-0982",
+    "name": "Galileo Galilei",
+    "email": "galileo.galilei@enterprise.io",
+    "department": "HR",
+    "jobRole": "HR Generalist",
+    "gender": "Female",
+    "features": {
+      "age": 29,
+      "distanceFromHome": 26,
+      "monthlyIncome": 6700,
+      "overTime": 1,
+      "jobSatisfaction": 1,
+      "environmentSatisfaction": 1,
+      "workLifeBalance": 1,
+      "yearsAtCompany": 1,
+      "yearsInCurrentRole": 0,
+      "yearsSinceLastPromotion": 4,
+      "stockOptionLevel": 0
+    },
+    "actualAttrition": 1,
+    "riskProbability": 0.9261488491720338,
+    "shapValues": {
+      "jobSatisfaction": 0.6478697391526573
+    },
+    "itdoStatus": "Trigger",
+    "itdoDetails": {
+      "triggerAlert": "Overwork & Burnout Alert: Continuous overtime paired with severe Work-Life imbalance.",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [
+        "Establish formal 1-on-1 retention review",
+        "Conduct internal market compensation salary review"
+      ],
+      "lastUpdated": "2026-06-27T07:20:05.154Z"
+    }
+  },
+  {
+    "id": "EMP-0983",
+    "name": "Louis Pasteur",
+    "email": "louis.pasteur@enterprise.io",
+    "department": "R&D",
+    "jobRole": "Systems Researcher",
+    "gender": "Male",
+    "features": {
+      "age": 30,
+      "distanceFromHome": 11,
+      "monthlyIncome": 14750,
+      "overTime": 1,
+      "jobSatisfaction": 4,
+      "environmentSatisfaction": 3,
+      "workLifeBalance": 3,
+      "yearsAtCompany": 7,
+      "yearsInCurrentRole": 4,
+      "yearsSinceLastPromotion": 0,
+      "stockOptionLevel": 1
+    },
+    "actualAttrition": 0,
+    "riskProbability": 0.035427076880051055,
+    "shapValues": {
+      "jobSatisfaction": 0.24540508443975667
+    },
+    "itdoStatus": "Insight",
+    "itdoDetails": {
+      "triggerAlert": "",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [],
+      "lastUpdated": "2026-06-27T07:20:05.154Z"
+    }
+  },
+  {
+    "id": "EMP-0984",
+    "name": "Richard Feynman",
+    "email": "richard.feynman@enterprise.io",
+    "department": "Sales",
+    "jobRole": "Account Executive",
+    "gender": "Female",
+    "features": {
+      "age": 31,
+      "distanceFromHome": 12,
+      "monthlyIncome": 15000,
+      "overTime": 0,
+      "jobSatisfaction": 3,
+      "environmentSatisfaction": 3,
+      "workLifeBalance": 3,
+      "yearsAtCompany": 8,
+      "yearsInCurrentRole": 5,
+      "yearsSinceLastPromotion": 1,
+      "stockOptionLevel": 2
+    },
+    "actualAttrition": 0,
+    "riskProbability": 0.035427076880051055,
+    "shapValues": {
+      "jobSatisfaction": 0.24540508443975667
+    },
+    "itdoStatus": "Insight",
+    "itdoDetails": {
+      "triggerAlert": "",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [],
+      "lastUpdated": "2026-06-27T07:20:05.154Z"
+    }
+  },
+  {
+    "id": "EMP-0985",
+    "name": "Jane Goodall",
+    "email": "jane.goodall@enterprise.io",
+    "department": "HR",
+    "jobRole": "L&D Coordinator",
+    "gender": "Male",
+    "features": {
+      "age": 32,
+      "distanceFromHome": 13,
+      "monthlyIncome": 15250,
+      "overTime": 0,
+      "jobSatisfaction": 4,
+      "environmentSatisfaction": 3,
+      "workLifeBalance": 3,
+      "yearsAtCompany": 9,
+      "yearsInCurrentRole": 6,
+      "yearsSinceLastPromotion": 2,
+      "stockOptionLevel": 3
+    },
+    "actualAttrition": 0,
+    "riskProbability": 0.035427076880051055,
+    "shapValues": {
+      "jobSatisfaction": 0.24540508443975667
+    },
+    "itdoStatus": "Insight",
+    "itdoDetails": {
+      "triggerAlert": "",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [],
+      "lastUpdated": "2026-06-27T07:20:05.154Z"
+    }
+  },
+  {
+    "id": "EMP-0986",
+    "name": "Rachel Carson",
+    "email": "rachel.carson@enterprise.io",
+    "department": "R&D",
+    "jobRole": "Software Engineer",
+    "gender": "Female",
+    "features": {
+      "age": 33,
+      "distanceFromHome": 18,
+      "monthlyIncome": 7100,
+      "overTime": 1,
+      "jobSatisfaction": 1,
+      "environmentSatisfaction": 1,
+      "workLifeBalance": 1,
+      "yearsAtCompany": 1,
+      "yearsInCurrentRole": 0,
+      "yearsSinceLastPromotion": 2,
+      "stockOptionLevel": 0
+    },
+    "actualAttrition": 1,
+    "riskProbability": 0.9261488491720338,
+    "shapValues": {
+      "jobSatisfaction": 0.6478697391526573
+    },
+    "itdoStatus": "Trigger",
+    "itdoDetails": {
+      "triggerAlert": "Overwork & Burnout Alert: Continuous overtime paired with severe Work-Life imbalance.",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [
+        "Establish formal 1-on-1 retention review",
+        "Conduct internal market compensation salary review"
+      ],
+      "lastUpdated": "2026-06-27T07:20:05.154Z"
+    }
+  },
+  {
+    "id": "EMP-0987",
+    "name": "Stephen Jay Gould",
+    "email": "stephen.jay gould@enterprise.io",
+    "department": "Sales",
+    "jobRole": "Sales Development Rep",
+    "gender": "Male",
+    "features": {
+      "age": 34,
+      "distanceFromHome": 3,
+      "monthlyIncome": 15750,
+      "overTime": 0,
+      "jobSatisfaction": 4,
+      "environmentSatisfaction": 3,
+      "workLifeBalance": 3,
+      "yearsAtCompany": 11,
+      "yearsInCurrentRole": 7,
+      "yearsSinceLastPromotion": 1,
+      "stockOptionLevel": 2
+    },
+    "actualAttrition": 0,
+    "riskProbability": 0.035427076880051055,
+    "shapValues": {
+      "jobSatisfaction": 0.24540508443975667
+    },
+    "itdoStatus": "Insight",
+    "itdoDetails": {
+      "triggerAlert": "",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [],
+      "lastUpdated": "2026-06-27T07:20:05.154Z"
+    }
+  },
+  {
+    "id": "EMP-0988",
+    "name": "Carl Sagan",
+    "email": "carl.sagan@enterprise.io",
+    "department": "HR",
+    "jobRole": "HR Generalist",
+    "gender": "Female",
+    "features": {
+      "age": 35,
+      "distanceFromHome": 4,
+      "monthlyIncome": 16000,
+      "overTime": 0,
+      "jobSatisfaction": 3,
+      "environmentSatisfaction": 3,
+      "workLifeBalance": 3,
+      "yearsAtCompany": 12,
+      "yearsInCurrentRole": 8,
+      "yearsSinceLastPromotion": 2,
+      "stockOptionLevel": 3
+    },
+    "actualAttrition": 0,
+    "riskProbability": 0.035427076880051055,
+    "shapValues": {
+      "jobSatisfaction": 0.24540508443975667
+    },
+    "itdoStatus": "Insight",
+    "itdoDetails": {
+      "triggerAlert": "",
+      "decisionMade": "",
+      "operationsCompleted": [],
+      "operationsPending": [],
+      "lastUpdated": "2026-06-27T07:20:05.154Z"
+    }
+  }
+]

@@ -1,20 +1,95 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Employee Attrition Prediction App
 
-# Run and deploy your AI Studio app
+React + Express frontend with a FastAPI Python backend that runs the trained `model.pkl` for attrition risk prediction.
 
-This contains everything you need to run your app locally.
+## Architecture
 
-View your app in AI Studio: https://ai.studio/apps/687b2a18-3c01-46b8-b611-d04d4b703f2b
+```
+Frontend (React/Vite)  →  Express server  :3000
+Interactive Predictor  →  FastAPI backend  :8000  →  models/model.pkl
+```
 
-## Run Locally
+---
 
-**Prerequisites:**  Node.js
+## Prerequisites
 
+- Node.js 18+
+- Python 3.9+
+- Gemini API key (optional — app runs in fallback mode without it)
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+---
+
+## 1. FastAPI Backend (model.pkl)
+
+```bash
+cd backend
+pip install -r requirements.txt
+uvicorn main:app --reload --port 8000
+```
+
+API runs at: `http://localhost:8000`
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/predict` | POST | Run model.pkl prediction + SHAP values |
+| `/metadata` | GET | Model metadata |
+| `/docs` | GET | Auto-generated Swagger UI |
+
+> **SHAP**: Install `shap` for real SHAP values. If unavailable, falls back to rule-based attribution.
+
+---
+
+## 2. Frontend + Express Server
+
+```bash
+# In project root
+npm install
+cp .env.example .env
+# Edit .env — set GEMINI_API_KEY (optional)
+
+npm run dev
+```
+
+App available at: `http://localhost:3000`
+
+For production:
+
+```bash
+npm run build
+npm start
+```
+
+---
+
+## Models (`/models`)
+
+Pre-trained files loaded by the FastAPI backend at startup:
+
+| File | Description |
+|------|-------------|
+| `model.pkl` | GradientBoostingClassifier (300 estimators, depth 4, ROC-AUC: 0.80) |
+| `preprocessor.pkl` | sklearn ColumnTransformer for feature encoding |
+| `metadata.json` | Model config and performance metrics |
+
+---
+
+## Express API Endpoints
+
+| Method | Route | Description |
+|--------|-------|-------------|
+| GET | `/api/employees` | Employee roster + model config |
+| POST | `/api/employees/reset` | Reset to default state |
+| POST | `/api/employees/:id/update-features` | Update features & re-predict |
+| POST | `/api/employees/:id/itdo` | Update ITDO workflow status |
+| POST | `/api/employees/:id/gemini-consult` | AI retention advisory |
+| GET | `/api/model/metadata` | Model metadata |
+| POST | `/api/chatbot` | Retention chatbot |
+
+---
+
+## Environment Variables
+
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `GEMINI_API_KEY` | No | Enables AI consultant & chatbot features |
+| `APP_URL` | No | Hosted app URL |

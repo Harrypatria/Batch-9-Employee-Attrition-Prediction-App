@@ -26,13 +26,21 @@ import {
 } from "lucide-react";
 
 interface PredictResponse {
-  success: boolean;
-  riskProbability: number;
-  riskLevel: "LOW" | "MEDIUM" | "HIGH";
-  topRiskFactors: { feature: string; impact: number; text: string }[];
-  protectiveFactors: { feature: string; impact: number; text: string }[];
-  suggestedInterventions: string[];
+  prediction: "Yes" | "No";
+  probability: number;
+  shapValues: { feature: string; value: number }[];
+  baseValue: number;
 }
+
+const LABEL_MAP: Record<string, string> = {
+  age: "Age", distanceFromHome: "Commute distance", monthlyIncome: "Monthly income",
+  overTime: "Overtime required", jobSatisfaction: "Job satisfaction",
+  environmentSatisfaction: "Environment satisfaction", workLifeBalance: "Work-Life balance",
+  yearsAtCompany: "Years at company", yearsSinceLastPromotion: "Years since promotion",
+  stockOptionLevel: "Stock Option level", maritalStatus: "Marital status",
+  businessTravel: "Business travel frequency", jobInvolvement: "Job involvement level",
+  numCompaniesWorked: "Companies worked", relationshipSatisfaction: "Relationship satisfaction",
+};
 
 interface ModelMetadata {
   author: string;
@@ -82,11 +90,13 @@ export default function InteractivePredictor() {
   // Prediction output state
   const [prediction, setPrediction] = useState<PredictResponse | null>(null);
   const [isCalculating, setIsCalculating] = useState<boolean>(false);
+  const [apiError, setApiError] = useState<string | null>(null);
 
   // Trigger recalculation on any change
   useEffect(() => {
     const triggerCalculation = async () => {
       setIsCalculating(true);
+      setApiError(null);
       try {
         const payload = {
           features: {
@@ -114,7 +124,7 @@ export default function InteractivePredictor() {
           }
         };
 
-        const res = await fetch("/api/predict", {
+        const res = await fetch("http://127.0.0.1:8000/predict", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),
@@ -122,18 +132,23 @@ export default function InteractivePredictor() {
 
         if (res.ok) {
           const data = await res.json();
-          if (data.success) {
+          if (data.probability !== undefined) {
             setPrediction(data);
+          } else {
+            setApiError("API returned unexpected response.");
           }
+        } else {
+          const errText = await res.text();
+          setApiError(`HTTP ${res.status}: ${errText.slice(0, 120)}`);
         }
-      } catch (err) {
-        console.error("Failed to run sandbox prediction:", err);
+      } catch (err: any) {
+        setApiError(err?.message || "Cannot connect to FastAPI backend at port 8000.");
+        console.error("Prediction fetch failed:", err);
       } finally {
         setIsCalculating(false);
       }
     };
 
-    // Minor debounce to prevent aggressive server spamming on continuous slider dragging
     const timeoutId = setTimeout(triggerCalculation, 150);
     return () => clearTimeout(timeoutId);
   }, [
@@ -182,7 +197,51 @@ export default function InteractivePredictor() {
     return "bg-emerald-50 text-emerald-700 border-emerald-200";
   };
 
-  const riskPercent = prediction ? Math.round(prediction.riskProbability * 100) : 25;
+  const riskProbability = prediction?.probability ?? 0.25;
+  const riskPercent = Math.round(riskProbability * 100);
+  const riskLevel = riskProbability > 0.70 ? "HIGH" : riskProbability > 0.40 ? "MEDIUM" : "LOW";
+
+  // Derive risk and protective factors from real SHAP values
+  const topRiskFactors = (prediction?.shapValues ?? [])
+    .filter(s => s.value > 0.01)
+    .slice(0, 5)
+    .map(s => {
+      const pct = Math.round(s.value * 100);
+      const label = LABEL_MAP[s.feature] ?? s.feature;
+      let text = `${label} — unfavourable (+${pct}%)`;
+      if (s.feature === "overTime" && worksOvertime) text = `Overtime required — high risk factor (+${pct}%)`;
+      if (s.feature === "distanceFromHome") text = `Long commute distance — ${distanceFromHome}km (+${pct}%)`;
+      if (s.feature === "monthlyIncome") text = `Lower income tier — $${monthlyIncome.toLocaleString()} (+${pct}%)`;
+      if (s.feature === "yearsSinceLastPromotion") text = `Promotion gap — ${yearsSinceLastPromotion} years stagnation (+${pct}%)`;
+      if (s.feature === "maritalStatus" && maritalStatus === "Single") text = `Single — higher mobility (+${pct}%)`;
+      if (s.feature === "businessTravel" && businessTravel === "Travel_Frequently") text = `Frequent business travel (+${pct}%)`;
+      return { feature: s.feature, impact: s.value, text };
+    });
+
+  const protectiveFactors = (prediction?.shapValues ?? [])
+    .filter(s => s.value < -0.01)
+    .slice(0, 5)
+    .map(s => {
+      const label = LABEL_MAP[s.feature] ?? s.feature;
+      let text = `${label} is favorable`;
+      if (s.feature === "overTime" && !worksOvertime) text = "No overtime required";
+      if (s.feature === "stockOptionLevel" && stockOptionLevel > 0) text = `Active stock options participant (L${stockOptionLevel})`;
+      if (s.feature === "workLifeBalance" && workLifeBalance >= 3) text = "Good Work-Life balance score";
+      if (s.feature === "jobSatisfaction" && jobSatisfaction >= 3) text = "Satisfied in current role";
+      if (s.feature === "maritalStatus" && maritalStatus !== "Single") text = "Stable marital status support structure";
+      return { feature: s.feature, impact: s.value, text };
+    });
+
+  const suggestedInterventions: string[] = (() => {
+    if (riskProbability < 0.35) return ["No immediate actions required — continue regular check-ins"];
+    const actions: string[] = [];
+    if (worksOvertime) actions.push("Review overtime load and implement workload cap / on-call rotation");
+    if (monthlyIncome < 5500) actions.push("Conduct compensation benchmarking & arrange equity refresh / spot bonus");
+    if (workLifeBalance <= 2) actions.push("Introduce remote/hybrid options to mitigate commute stress & increase work-life balance");
+    if (jobSatisfaction <= 2) actions.push("Schedule formal 1-on-1 career development and mentorship alignment session");
+    if (actions.length === 0) actions.push("Maintain close manager-employee feedback loops and schedule mid-year career review");
+    return actions;
+  })();
 
   return (
     <motion.div 
@@ -539,9 +598,21 @@ export default function InteractivePredictor() {
               <span className="text-[10px] uppercase tracking-wider font-bold text-slate-400 font-mono">
                 Estimated Attrition Risk
               </span>
-              
+
+              {/* API status */}
+              {apiError ? (
+                <div className="mt-1 px-2 py-1 bg-rose-50 border border-rose-200 rounded text-[9px] text-rose-600 font-mono text-center max-w-[160px]">
+                  FastAPI offline<br/>
+                  <span className="font-normal opacity-70">{apiError.slice(0, 60)}</span>
+                </div>
+              ) : isCalculating ? (
+                <div className="mt-1 text-[9px] text-indigo-400 font-mono animate-pulse">calculating...</div>
+              ) : prediction ? (
+                <div className="mt-1 text-[9px] text-emerald-500 font-mono">model.pkl active</div>
+              ) : null}
+
               <div className="my-2 flex items-baseline justify-center">
-                <span className={`text-5xl font-black tracking-tighter transition-all duration-300 ${getRiskColorClass(prediction?.riskProbability || 0.25)}`}>
+                <span className={`text-5xl font-black tracking-tighter transition-all duration-300 ${getRiskColorClass(riskProbability)}`}>
                   {riskPercent}%
                 </span>
               </div>
@@ -619,14 +690,16 @@ export default function InteractivePredictor() {
                   <circle cx="50" cy="50" r="3" fill="#0f172a" />
                   <circle cx="50" cy="50" r="1.5" fill="#f8fafc" />
 
-                  {/* Rotating pointer/needle */}
-                  <g 
-                    transform={`rotate(${Math.min(Math.max((prediction?.riskProbability || 0.25) * 180, 0), 180)} 50 50)`}
-                    className="transition-transform duration-500 ease-out"
+                  {/* Rotating pointer/needle — CSS transform-origin for smooth transition */}
+                  <g
+                    style={{
+                      transformOrigin: "50px 50px",
+                      transform: `rotate(${Math.min(Math.max(riskProbability * 180, 0), 180)}deg)`,
+                      transition: "transform 0.5s ease-out",
+                    }}
                   >
-                    {/* Tapered needle */}
-                    <polygon 
-                      points="50,49.2 16,50 50,50.8" 
+                    <polygon
+                      points="50,49.2 16,50 50,50.8"
                       fill="#0f172a"
                       stroke="#0f172a"
                       strokeWidth="0.5"
@@ -637,8 +710,8 @@ export default function InteractivePredictor() {
 
               {/* Risk Level Badge */}
               <div className="mt-2.5">
-                <span className={`px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest border ${getRiskBgClass(prediction?.riskProbability || 0.25)}`}>
-                  {prediction ? `${prediction.riskLevel} RISK` : "LOW RISK"}
+                <span className={`px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest border ${getRiskBgClass(riskProbability)}`}>
+                  {`${riskLevel} RISK`}
                 </span>
               </div>
             </div>
@@ -656,8 +729,8 @@ export default function InteractivePredictor() {
                   </div>
                   
                   <div className="space-y-2.5 min-h-[140px]">
-                    {prediction && prediction.topRiskFactors.length > 0 ? (
-                      prediction.topRiskFactors.map((factor, idx) => (
+                    {topRiskFactors.length > 0 ? (
+                      topRiskFactors.map((factor, idx) => (
                         <div key={idx} className="flex items-start space-x-2 text-xs text-slate-700">
                           <span className="text-rose-500 shrink-0 font-bold select-none">•</span>
                           <span>{factor.text}</span>
@@ -677,8 +750,8 @@ export default function InteractivePredictor() {
                   </div>
                   
                   <div className="space-y-2.5 min-h-[140px]">
-                    {prediction && prediction.protectiveFactors.length > 0 ? (
-                      prediction.protectiveFactors.map((factor, idx) => (
+                    {protectiveFactors.length > 0 ? (
+                      protectiveFactors.map((factor, idx) => (
                         <div key={idx} className="flex items-start space-x-2 text-xs text-slate-700">
                           <span className="text-emerald-500 shrink-0 font-bold select-none">•</span>
                           <span>{factor.text}</span>
@@ -708,29 +781,11 @@ export default function InteractivePredictor() {
                 </div>
 
                 <div className="space-y-3 bg-slate-50 p-4 rounded-xl border border-slate-100">
-                  {prediction ? (
+                  {topRiskFactors.length > 0 || protectiveFactors.length > 0 ? (
                     (() => {
-                      const labelMapping: Record<string, string> = {
-                        age: "Age",
-                        distanceFromHome: "Commute Distance",
-                        monthlyIncome: "Monthly Income",
-                        overTime: "Overtime Required",
-                        jobSatisfaction: "Job Satisfaction",
-                        environmentSatisfaction: "Environment Satisfaction",
-                        workLifeBalance: "Work-Life Balance",
-                        yearsAtCompany: "Years at Company",
-                        yearsSinceLastPromotion: "Years Since Promotion",
-                        stockOptionLevel: "Stock Option Level",
-                        maritalStatus: "Marital Status",
-                        businessTravel: "Business Travel",
-                        jobInvolvement: "Job Involvement",
-                        numCompaniesWorked: "Companies Worked",
-                        relationshipSatisfaction: "Relationship Satisfaction",
-                      };
-
                       const combinedDrivers = [
-                        ...prediction.topRiskFactors.map(f => ({ ...f, type: 'risk' as const })),
-                        ...prediction.protectiveFactors.map(f => ({ ...f, type: 'protective' as const }))
+                        ...topRiskFactors.map(f => ({ ...f, type: 'risk' as const })),
+                        ...protectiveFactors.map(f => ({ ...f, type: 'protective' as const }))
                       ]
                       .sort((a, b) => Math.abs(b.impact) - Math.abs(a.impact))
                       .slice(0, 5);
@@ -741,7 +796,7 @@ export default function InteractivePredictor() {
                         <div className="space-y-3.5">
                           {combinedDrivers.map((driver, idx) => {
                             const percentWidth = (Math.abs(driver.impact) / maxAbsImpact) * 100;
-                            const displayName = labelMapping[driver.feature] || driver.feature;
+                            const displayName = LABEL_MAP[driver.feature] || driver.feature;
                             const isRisk = driver.type === 'risk';
                             const signedValText = isRisk ? `+${Math.round(driver.impact * 100)}%` : `${Math.round(driver.impact * 100)}%`;
 
@@ -804,7 +859,7 @@ export default function InteractivePredictor() {
                 Recommended HR Actions
               </h4>
               <div className="space-y-1.5">
-                {prediction && prediction.suggestedInterventions.map((action, idx) => (
+                {suggestedInterventions.map((action, idx) => (
                   <div key={idx} className="flex items-start space-x-2 text-xs text-slate-700">
                     <span className="text-indigo-500 shrink-0 font-semibold">•</span>
                     <span>{action}</span>
