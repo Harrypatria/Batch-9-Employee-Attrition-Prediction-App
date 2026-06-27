@@ -1,0 +1,6 @@
+{
+  "name": "Employee Attrition Prediction Command Center",
+  "description": "An enterprise-grade people analytics platform that leverages high-fidelity machine learning modeling and SHAP-based explainability to predict voluntary departures and guide proactive ITDO retention workflows.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
