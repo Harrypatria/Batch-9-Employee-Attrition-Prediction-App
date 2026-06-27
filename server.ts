@@ -499,6 +499,225 @@ Create a checklist of 4-5 tactical tasks for the operations team to execute this
     }
   });
 
+  // ────────────────────────────────────────────────────────────────────────────
+  // API ROUTE 8: Chatbot Conversational Assistant
+  // ────────────────────────────────────────────────────────────────────────────
+  app.post("/api/chatbot", async (req, res) => {
+    const { message, history, employeeId } = req.body;
+
+    if (!message) {
+      return res.status(400).json({ error: "Message is required." });
+    }
+
+    // 1. Gather employee context if requested/provided
+    let employeeContext = "";
+    let empName = "";
+    let empDetails: any = null;
+
+    if (employeeId) {
+      const emp = employeesState.find(e => e.id === employeeId);
+      if (emp) {
+        empDetails = emp;
+        empName = emp.name;
+        const shapDrivers = Object.entries(emp.shapValues || {})
+          .map(([feat, val]) => `  - ${feat}: ${val >= 0 ? "+" : ""}${(val * 100).toFixed(1)}%`)
+          .join("\n");
+        
+        employeeContext = `
+[Active Context: Currently Selected Employee being inspected by user]
+- Name: ${emp.name}
+- Email: ${emp.email}
+- Role: ${emp.jobRole} (${emp.department} department)
+- Gender: ${emp.gender}
+- Attrition Risk Probability: ${(emp.riskProbability! * 100).toFixed(1)}%
+- ITDO Lifecycle Status: ${emp.itdoStatus || "Not Set"}
+- Key Features:
+  * Age: ${emp.features.age}
+  * Distance From Home: ${emp.features.distanceFromHome} miles
+  * Monthly Income: $${emp.features.monthlyIncome}
+  * Overtime: ${emp.features.overTime === 1 ? "Yes" : "No"}
+  * Job Satisfaction: ${emp.features.jobSatisfaction}/4
+  * Environment Satisfaction: ${emp.features.environmentSatisfaction}/4
+  * Work-Life Balance: ${emp.features.workLifeBalance}/4
+  * Years at Company: ${emp.features.yearsAtCompany} years
+  * Years in Current Role: ${emp.features.yearsInCurrentRole} years
+  * Years Since Promotion: ${emp.features.yearsSinceLastPromotion} years
+  * Stock Option Level: ${emp.features.stockOptionLevel}/3
+- SHAP Feature Contributions (Local Attributions):
+${shapDrivers}
+`;
+      }
+    }
+
+    // 2. Gather model context
+    let modelContext = "";
+    let treesCount = 300;
+    let learningRate = 0.12;
+    let maxDepth = 3;
+    let aucRoc = 0.89;
+
+    try {
+      const metadataPath = path.join(process.cwd(), "models", "metadata.json");
+      if (fs.existsSync(metadataPath)) {
+        const metadata = JSON.parse(fs.readFileSync(metadataPath, "utf-8"));
+        if (metadata.n_estimators) treesCount = metadata.n_estimators;
+        if (metadata.learning_rate) learningRate = metadata.learning_rate;
+        if (metadata.max_depth) maxDepth = metadata.max_depth;
+        if (metadata.test_roc_auc) aucRoc = metadata.test_roc_auc;
+        
+        modelContext = `
+[Active Context: Gradient Boosting Model Parameters]
+- Model Type: Gradient Boosting Decision Tree (GBDT)
+- Estimators Count (Trees): ${treesCount}
+- Max Tree Depth: ${maxDepth}
+- Learning Rate: ${learningRate}
+- Test ROC-AUC Score: ${aucRoc}
+- Features Configured: age, distanceFromHome, monthlyIncome, overTime, jobSatisfaction, environmentSatisfaction, workLifeBalance, yearsAtCompany, yearsInCurrentRole, yearsSinceLastPromotion, stockOptionLevel
+`;
+      }
+    } catch (e) {
+      // Proceed with defaults
+    }
+
+    // 3. Compose the dynamic system instruction
+    const systemInstruction = `You are "Retention.OS Senior AI Co-Pilot", an elite HR analytics consultant and machine learning advisor specializing in employee retention, GBDT explainability, and the ITDO (Insights -> Triggers -> Decisions -> Operations) framework.
+
+Your purpose is to assist managers and leaders in retaining talent, understanding predictive risk, and analyzing machine learning decisions.
+
+Your conversation guidelines:
+- Be incredibly professional, objective, action-oriented, and supportive. Use high-fidelity terms but speak clearly and directly (no fluff).
+- If a specific employee is provided in the active context, tailor your answers to them. For example, explain how their Overtime, jobSatisfaction, or Monthly Income features affect their predicted attrition probability via SHAP.
+- If asked about retention playbooks or interventions, formulate concrete, realistic suggestions (e.g., compensation, hybrid schedule, overtime reduction, career mentorship).
+- Always format your responses using clean Markdown, with bullet points, headers, or bold font where appropriate for scannability.
+- If no employee context is active, guide the user to inspect any of their team members in the roster or adjust parameters in the simulation sandbox to see real-time updates.
+
+Current Active Context:
+${employeeContext}
+${modelContext}
+`;
+
+    if (aiClient) {
+      try {
+        // Construct the multi-turn chat contents from history
+        const contents = [];
+        if (history && Array.isArray(history)) {
+          for (const turn of history) {
+            contents.push({
+              role: turn.role === "user" ? "user" : "model",
+              parts: [{ text: turn.text }]
+            });
+          }
+        }
+        contents.push({
+          role: "user",
+          parts: [{ text: message }]
+        });
+
+        const response = await aiClient.models.generateContent({
+          model: "gemini-3.5-flash",
+          contents: contents,
+          config: {
+            systemInstruction: systemInstruction,
+            temperature: 0.7,
+          }
+        });
+
+        const reply = response.text || "I apologize, but I received an empty response. Let me know how else I can assist you.";
+        return res.json({ success: true, reply });
+      } catch (err: any) {
+        console.error("Gemini call failed inside chatbot route, falling back to local rule-engine:", err);
+        // Fall through to local fallback below
+      }
+    }
+
+    // ────────────────────────────────────────────────────────────────────────
+    // High-Fidelity Local Rule-Engine Fallback Responder
+    // ────────────────────────────────────────────────────────────────────────
+    const msgLower = message.toLowerCase();
+    let reply = "";
+
+    if (empDetails) {
+      const riskPct = Math.round(empDetails.riskProbability * 100);
+      
+      if (msgLower.includes("why") || msgLower.includes("reason") || msgLower.includes("risk") || msgLower.includes("factor") || msgLower.includes("shap")) {
+        const drivers = Object.entries(empDetails.shapValues || {})
+          .map(([feat, val]: [string, any]) => ({ feature: feat, impact: val }))
+          .sort((a, b) => Math.abs(b.impact) - Math.abs(a.impact));
+        
+        const positive = drivers.filter(d => d.impact > 0).slice(0, 3);
+        const negative = drivers.filter(d => d.impact < 0).slice(0, 2);
+
+        reply = `### Attrition Risk Diagnosis for **${empName}**
+Our GBDT predictive classifier estimates **${empName}** is at a **${riskPct}%** attrition risk.
+
+**Primary Risk Driver Drivers (Pushing Risk UP):**
+${positive.map(p => `- **${p.feature}**: Adds **+${Math.round(p.impact * 100)}%** to risk.`).join("\n")}
+
+**Retention Stabilizers (Pulling Risk DOWN):**
+${negative.map(n => `- **${n.feature}**: Pulls risk down by **${Math.abs(Math.round(n.impact * 100))}%**`).join("\n")}
+
+*Note: You can review these attributions visualized live in the horizontal SHAP bar chart in the details panel.*`;
+      } 
+      else if (msgLower.includes("retain") || msgLower.includes("action") || msgLower.includes("playbook") || msgLower.includes("help") || msgLower.includes("recommend") || msgLower.includes("itdo") || msgLower.includes("decision")) {
+        const needsOvertimeCap = empDetails.features.overTime === 1;
+        const needsIncomeRaise = empDetails.features.monthlyIncome < 5500;
+        const needsHybridWork = empDetails.features.distanceFromHome > 15;
+        const lowSatisfaction = empDetails.features.jobSatisfaction <= 2;
+
+        reply = `### Targeted Playbook Recommendation for **${empName}**
+Applying the **ITDO Framework** to **${empName}**'s unique predictive profile, we recommend:
+
+1. **INSIGHT**: Current risk level is **${riskPct}%**, mostly triggered by ${needsOvertimeCap ? "excessive overtime demands" : ""}${needsIncomeRaise ? " and a salary lagging below competitive market rate" : " and workplace environment concerns"}.
+2. **TRIGGER ALERT**: Employee is marked in **${empDetails.itdoStatus || "Insight"}** state.
+3. **DECISION STEPS**:
+${needsOvertimeCap ? "   * **Overtime Cap**: Enforce an immediate cap of 40 hours per week.\n" : ""}${needsIncomeRaise ? "   * **Salary Realignment**: Approve a 10% target promotion or adjustment to reach market parity.\n" : ""}${needsHybridWork ? "   * **Hybrid Remote Option**: Grant 2 days remote weekly to mitigate the commute strain.\n" : ""}${lowSatisfaction ? "   * **Role Check-In**: Conduct an alignment session with leadership regarding daily projects and satisfaction levels.\n" : ""}   * **Mentorship Connect**: Connect with a senior director in the R&D/Sales division to strengthen retention anchor.
+4. **OPERATIONS TICKETS**:
+   * Schedule the follow-up meeting inside 14 business days.
+   * Update active sandbox simulator configurations in the prediction pane to trace metric recovery.`;
+      }
+      else {
+        reply = `### Selected Profile Overview: **${empName}**
+- **Role**: ${empDetails.jobRole} (${empDetails.department})
+- **Current Predicted Risk**: **${riskPct}%**
+- **Lifecycle Status**: \`${empDetails.itdoStatus || "Insight"}\`
+
+**Summary of Features:**
+- Work-Life Balance: **${empDetails.features.workLifeBalance}/4**
+- Overtime Required: **${empDetails.features.overTime === 1 ? "Yes" : "No"}**
+- Monthly Income: **$${empDetails.features.monthlyIncome}**
+- Distance from Home: **${empDetails.features.distanceFromHome} miles**
+
+*Ask me about specific risk drivers, or request a customized ITDO intervention plan for ${empName}!*`;
+      }
+    } 
+    else if (msgLower.includes("model") || msgLower.includes("accuracy") || msgLower.includes("gbdt") || msgLower.includes("estimators") || msgLower.includes("parameters") || msgLower.includes("roc") || msgLower.includes("auc")) {
+      reply = `### Retention.OS GBDT Classifier Parameters
+Our predictive engine is backed by a custom, server-side **Gradient Boosting Decision Tree** (GBDT) model:
+
+- **Estimator Count (Trees)**: \`${treesCount}\` sequential learning estimators
+- **Maximum Tree Depth**: \`${maxDepth}\` nodes (capturing up to 3rd-order interaction effects)
+- **Learning Rate (Shrinkage)**: \`${learningRate}\` shrinkage parameter
+- **Test ROC-AUC Accuracy**: \`${aucRoc}\` (strong diagnostic performance)
+
+**Feature Attribution Architecture:**
+We leverage **Saabas Local Path Explanations** to decompose predictions. As an employee profile moves down each decision tree, we calculate the expected target shift at each branch node split. This provides an exact, additive SHAP-like percentage impact (+/-%) for each individual feature, giving HR practitioners total transparency.`;
+    }
+    else {
+      reply = `### Hello! I am your Retention.OS Senior AI Co-Pilot. 👋
+I am ready to help you analyze employee attrition risks, inspect predictive drivers, and recommend playbooks.
+
+**Here are some things you can ask me:**
+1. **Explain why a specific employee is at risk**: "Why is the current employee at risk?" or "What are the risk factors?" (make sure to select an employee in the roster first!)
+2. **Request retention recommendations**: "How can we retain this employee?" or "Give me a playook for him"
+3. **Ask about our predictive model**: "How does the GBDT classifier work?" or "What is the accuracy of the model?"
+4. **General HR queries**: Ask about best practices for remote-hybrid transitions or combating employee burnout.
+
+*Please select an employee in the left-hand roster to enable full profile-specific context.*`;
+    }
+
+    res.json({ success: true, reply });
+  });
+
   // Standard Vite setup
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({

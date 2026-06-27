@@ -12,6 +12,7 @@ import ITDOWorkflowTracker from "./components/ITDOWorkflowTracker";
 import InteractivePredictor from "./components/InteractivePredictor";
 import { ShieldAlert, RefreshCw, Layers, Database, UserCheck, Play, Radio, Calendar, LogOut } from "lucide-react";
 import LandingAndAuth from "./components/LandingAndAuth";
+import RetentionChatbot from "./components/RetentionChatbot";
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(() => {
@@ -346,6 +347,16 @@ export default function App() {
           onUpdateItdo={handleUpdateItdo}
         />
       )}
+
+      {/* AI Conversational Copilot Widget */}
+      <RetentionChatbot
+        employees={employees}
+        activeEmployeeId={selectedEmployee?.id || null}
+        onSelectEmployee={(empId) => {
+          const found = employees.find(e => e.id === empId);
+          if (found) setSelectedEmployee(found);
+        }}
+      />
 
       {/* Bottom Status Bar matching Geometric Balance */}
       <footer className="h-10 bg-slate-900 text-slate-400 px-8 flex items-center justify-between text-[10px] font-mono shrink-0 border-t border-slate-950" id="app-footer">
