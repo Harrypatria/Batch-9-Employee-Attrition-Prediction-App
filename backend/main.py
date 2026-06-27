@@ -216,6 +216,23 @@ except Exception as e:
 
 # ── Routes ────────────────────────────────────────────────────────────────────
 
+@app.get("/")
+async def root():
+    return {
+        "status": "ok",
+        "service": "Attrition Prediction API",
+        "model": "GradientBoostingClassifier",
+        "predictor": "ready" if predictor is not None else "unavailable",
+        "shap": SHAP_AVAILABLE,
+        "endpoints": ["/predict", "/metadata", "/health", "/docs"],
+    }
+
+
+@app.get("/health")
+async def health():
+    return {"status": "ok", "predictor": predictor is not None, "shap": SHAP_AVAILABLE}
+
+
 @app.post("/predict", response_model=PredictionResult)
 async def predict(req: PredictRequest):
     if predictor is None:

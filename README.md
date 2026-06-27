@@ -27,12 +27,16 @@ pip install -r requirements.txt
 uvicorn main:app --reload --port 8000
 ```
 
-API runs at: `http://localhost:8000`
+API runs at: `http://127.0.0.1:8000`
+
+> Use `127.0.0.1` not `localhost` — on Windows, `localhost` may resolve to IPv6 `::1` while uvicorn binds to `127.0.0.1`.
 
 | Endpoint | Method | Description |
 |----------|--------|-------------|
+| `/` | GET | Service status + predictor/SHAP availability |
+| `/health` | GET | Minimal health check (`{"status":"ok"}`) |
 | `/predict` | POST | Run model.pkl prediction + SHAP values |
-| `/metadata` | GET | Model metadata |
+| `/metadata` | GET | Model metadata (algorithm, hyperparams, metrics) |
 | `/docs` | GET | Auto-generated Swagger UI |
 
 > **SHAP**: Install `shap` for real SHAP values. If unavailable, falls back to rule-based attribution.
