@@ -1,0 +1,1 @@
+[StandardScaler + OneHotEncoder pipeline preprocessor serialized with joblib/pickle placeholder. Used for HR features scaling and mapping. Replace with actual preprocessor.pkl binary file]

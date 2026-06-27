@@ -10,9 +10,13 @@ import EmployeeList from "./components/EmployeeList";
 import EmployeeDetailModal from "./components/EmployeeDetailModal";
 import ITDOWorkflowTracker from "./components/ITDOWorkflowTracker";
 import InteractivePredictor from "./components/InteractivePredictor";
-import { ShieldAlert, RefreshCw, Layers, Database, UserCheck, Play, Radio, Calendar } from "lucide-react";
+import { ShieldAlert, RefreshCw, Layers, Database, UserCheck, Play, Radio, Calendar, LogOut } from "lucide-react";
+import LandingAndAuth from "./components/LandingAndAuth";
 
 export default function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(() => {
+    return localStorage.getItem("sentinel_logged_in") === "true";
+  });
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [modelConfig, setModelConfig] = useState<ModelConfig | null>(null);
   const [selectedEmployee, setSelectedEmployee] = useState<Employee | null>(null);
@@ -133,6 +137,15 @@ export default function App() {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("sentinel_logged_in");
+    setIsLoggedIn(false);
+  };
+
+  if (!isLoggedIn) {
+    return <LandingAndAuth onLoginSuccess={() => setIsLoggedIn(true)} />;
+  }
+
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans" id="root-app-container">
       
@@ -210,6 +223,16 @@ export default function App() {
           >
             <RefreshCw className="w-3 h-3" />
             <span>Reset DB</span>
+          </button>
+
+          <button
+            onClick={handleLogout}
+            className="flex items-center space-x-1 bg-rose-950/40 hover:bg-rose-900/60 text-rose-300 hover:text-white border border-rose-800/40 rounded text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 transition cursor-pointer"
+            title="Securely log out of the command center"
+            id="header-logout-button"
+          >
+            <LogOut className="w-3 h-3" />
+            <span>Logout</span>
           </button>
         </div>
       </nav>

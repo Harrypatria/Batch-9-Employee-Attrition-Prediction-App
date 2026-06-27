@@ -534,83 +534,259 @@ export default function InteractivePredictor() {
           
           <div className="grid grid-cols-1 md:grid-cols-12 gap-0 border-b border-slate-100">
             
-            {/* Left Result Block: Large Meter */}
+            {/* Left Result Block: Custom Milestones Gauge */}
             <div className="col-span-1 md:col-span-4 p-6 flex flex-col items-center justify-center text-center bg-slate-50 border-r border-slate-100">
               <span className="text-[10px] uppercase tracking-wider font-bold text-slate-400 font-mono">
                 Estimated Attrition Risk
               </span>
               
-              <div className="my-3 flex items-baseline justify-center">
-                <span className={`text-6xl font-black tracking-tighter transition-all duration-300 ${getRiskColorClass(prediction?.riskProbability || 0.25)}`}>
+              <div className="my-2 flex items-baseline justify-center">
+                <span className={`text-5xl font-black tracking-tighter transition-all duration-300 ${getRiskColorClass(prediction?.riskProbability || 0.25)}`}>
                   {riskPercent}%
                 </span>
               </div>
 
-              {/* Slider Gauge Bar */}
-              <div className="w-full max-w-xs space-y-1.5 mt-2">
-                <div className="h-2 w-full bg-gradient-to-r from-emerald-500 via-amber-400 to-rose-600 rounded-full relative">
-                  {/* Sliding cursor marker */}
-                  <div 
-                    className="absolute top-1/2 -translate-y-1/2 w-1.5 h-4 bg-slate-950 border border-white rounded shadow-sm transition-all duration-300"
-                    style={{ left: `${riskPercent}%` }}
+              {/* Premium Milestone Semi-Circular SVG Gauge */}
+              <div className="w-full max-w-[180px] aspect-[180/100] relative my-2.5 mx-auto" id="threshold-milestone-gauge">
+                <svg viewBox="0 0 100 55" className="w-full overflow-visible">
+                  {/* Outer shadow arc */}
+                  <path
+                    d="M 10 50 A 40 40 0 0 1 90 50"
+                    fill="none"
+                    stroke="#e2e8f0"
+                    strokeWidth="8"
+                    strokeLinecap="round"
+                    className="opacity-40"
                   />
-                </div>
-                <div className="flex justify-between text-[9px] font-mono text-slate-400 px-0.5">
-                  <span>0%</span>
-                  <span>50%</span>
-                  <span>100%</span>
-                </div>
+
+                  {/* LOW segment (0% to 40%): green/emerald */}
+                  <path
+                    d="M 10 50 A 40 40 0 0 1 90 50"
+                    fill="none"
+                    stroke="#10b981"
+                    strokeWidth="8"
+                    strokeDasharray="50.24 251.3"
+                    strokeDashoffset="0"
+                    transform="rotate(-180 50 50)"
+                  />
+
+                  {/* MEDIUM segment (40% to 70%): amber/orange */}
+                  <path
+                    d="M 10 50 A 40 40 0 0 1 90 50"
+                    fill="none"
+                    stroke="#f59e0b"
+                    strokeWidth="8"
+                    strokeDasharray="37.68 251.3"
+                    strokeDashoffset="-50.24"
+                    transform="rotate(-180 50 50)"
+                  />
+
+                  {/* HIGH segment (70% to 100%): rose/red */}
+                  <path
+                    d="M 10 50 A 40 40 0 0 1 90 50"
+                    fill="none"
+                    stroke="#f43f5e"
+                    strokeWidth="8"
+                    strokeDasharray="37.68 251.3"
+                    strokeDashoffset="-87.92"
+                    transform="rotate(-180 50 50)"
+                  />
+
+                  {/* Milestone Division Tick Lines */}
+                  {/* 40% Tick Line (Angle = 180 - 0.4*180 = 108 deg) */}
+                  <line 
+                    x1="22" y1="23" x2="18" y2="20" 
+                    stroke="#1e293b" strokeWidth="1.5"
+                  />
+                  {/* 70% Tick Line (Angle = 180 - 0.7*180 = 54 deg) */}
+                  <line 
+                    x1="74" y1="20" x2="78" y2="17" 
+                    stroke="#1e293b" strokeWidth="1.5"
+                  />
+
+                  {/* Milestone label text */}
+                  <text x="10" y="58" textAnchor="middle" className="text-[6px] fill-slate-400 font-mono font-bold">0%</text>
+                  <text x="24" y="16" textAnchor="middle" className="text-[5.5px] fill-emerald-600 font-sans font-black">LOW</text>
+                  <text x="50" y="7" textAnchor="middle" className="text-[5.5px] fill-amber-600 font-sans font-black">MED</text>
+                  <text x="76" y="14" textAnchor="middle" className="text-[5.5px] fill-rose-600 font-sans font-black">HIGH</text>
+                  <text x="90" y="58" textAnchor="middle" className="text-[6px] fill-slate-400 font-mono font-bold">100%</text>
+
+                  {/* Milestone thresholds indicators */}
+                  <text x="22" y="29" textAnchor="end" className="text-[5px] fill-slate-500 font-mono font-semibold">0.4</text>
+                  <text x="78" y="26" textAnchor="start" className="text-[5px] fill-slate-500 font-mono font-semibold">0.7</text>
+
+                  {/* Center pivot point pin */}
+                  <circle cx="50" cy="50" r="3" fill="#0f172a" />
+                  <circle cx="50" cy="50" r="1.5" fill="#f8fafc" />
+
+                  {/* Rotating pointer/needle */}
+                  <g 
+                    transform={`rotate(${Math.min(Math.max((prediction?.riskProbability || 0.25) * 180, 0), 180)} 50 50)`}
+                    className="transition-transform duration-500 ease-out"
+                  >
+                    {/* Tapered needle */}
+                    <polygon 
+                      points="50,49.2 16,50 50,50.8" 
+                      fill="#0f172a"
+                      stroke="#0f172a"
+                      strokeWidth="0.5"
+                    />
+                  </g>
+                </svg>
               </div>
 
               {/* Risk Level Badge */}
-              <div className="mt-4">
+              <div className="mt-2.5">
                 <span className={`px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest border ${getRiskBgClass(prediction?.riskProbability || 0.25)}`}>
                   {prediction ? `${prediction.riskLevel} RISK` : "LOW RISK"}
                 </span>
               </div>
             </div>
 
-            {/* Middle/Right: RISK and PROTECTIVE FACTORS panels */}
-            <div className="col-span-1 md:col-span-8 p-6 grid grid-cols-1 sm:grid-cols-2 gap-6 bg-white">
+            {/* Middle/Right: RISK, PROTECTIVE FACTORS and SHAP BAR CHART */}
+            <div className="col-span-1 md:col-span-8 p-6 flex flex-col space-y-6 bg-white md:border-l border-slate-100">
               
-              {/* Risk Factors */}
-              <div className="space-y-4">
-                <div className="flex items-center gap-1.5 text-rose-600 font-bold text-xs uppercase tracking-wider">
-                  <TrendingUp className="w-3.5 h-3.5" />
-                  <span>▲ Risk Factors</span>
+              {/* Lists Row */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pb-6 border-b border-slate-100">
+                {/* Risk Factors */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-1.5 text-rose-600 font-bold text-xs uppercase tracking-wider">
+                    <TrendingUp className="w-3.5 h-3.5" />
+                    <span>▲ Risk Factors</span>
+                  </div>
+                  
+                  <div className="space-y-2.5 min-h-[140px]">
+                    {prediction && prediction.topRiskFactors.length > 0 ? (
+                      prediction.topRiskFactors.map((factor, idx) => (
+                        <div key={idx} className="flex items-start space-x-2 text-xs text-slate-700">
+                          <span className="text-rose-500 shrink-0 font-bold select-none">•</span>
+                          <span>{factor.text}</span>
+                        </div>
+                      ))
+                    ) : (
+                      <div className="text-xs text-slate-400 italic">No significant active risk triggers detected.</div>
+                    )}
+                  </div>
                 </div>
-                
-                <div className="space-y-2.5 min-h-[140px]">
-                  {prediction && prediction.topRiskFactors.length > 0 ? (
-                    prediction.topRiskFactors.map((factor, idx) => (
-                      <div key={idx} className="flex items-start space-x-2 text-xs text-slate-700">
-                        <span className="text-rose-500 shrink-0 font-bold select-none">•</span>
-                        <span>{factor.text}</span>
-                      </div>
-                    ))
-                  ) : (
-                    <div className="text-xs text-slate-400 italic">No significant active risk triggers detected.</div>
-                  )}
+
+                {/* Protective Factors */}
+                <div className="space-y-4 border-t sm:border-t-0 sm:border-l border-slate-100 pt-4 sm:pt-0 sm:pl-6">
+                  <div className="flex items-center gap-1.5 text-emerald-600 font-bold text-xs uppercase tracking-wider">
+                    <HeartHandshake className="w-3.5 h-3.5" />
+                    <span>▼ Protective Factors</span>
+                  </div>
+                  
+                  <div className="space-y-2.5 min-h-[140px]">
+                    {prediction && prediction.protectiveFactors.length > 0 ? (
+                      prediction.protectiveFactors.map((factor, idx) => (
+                        <div key={idx} className="flex items-start space-x-2 text-xs text-slate-700">
+                          <span className="text-emerald-500 shrink-0 font-bold select-none">•</span>
+                          <span>{factor.text}</span>
+                        </div>
+                      ))
+                    ) : (
+                      <div className="text-xs text-slate-400 italic">No distinct protective factors found.</div>
+                    )}
+                  </div>
                 </div>
               </div>
 
-              {/* Protective Factors */}
-              <div className="space-y-4 border-t sm:border-t-0 sm:border-l border-slate-100 pt-4 sm:pt-0 sm:pl-6">
-                <div className="flex items-center gap-1.5 text-emerald-600 font-bold text-xs uppercase tracking-wider">
-                  <HeartHandshake className="w-3.5 h-3.5" />
-                  <span>▼ Protective Factors</span>
+              {/* SHAP LOCAL FEATURE ATTRIBUTIONS HORIZONTAL BAR CHART */}
+              <div className="space-y-4 pt-1" id="shap-visualizer-container">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <div className="flex items-center gap-2">
+                    <div className="p-1 bg-indigo-50 text-indigo-600 rounded">
+                      <Cpu className="w-3.5 h-3.5" />
+                    </div>
+                    <span className="text-xs font-black uppercase tracking-wider text-slate-800 font-display">
+                      SHAP Explainability Summary (Top 5 Contributions)
+                    </span>
+                  </div>
+                  <span className="text-[10px] font-mono text-slate-400">
+                    Scaled against N={modelMetadata?.n_estimators || 300} GBDT rounds
+                  </span>
                 </div>
-                
-                <div className="space-y-2.5 min-h-[140px]">
-                  {prediction && prediction.protectiveFactors.length > 0 ? (
-                    prediction.protectiveFactors.map((factor, idx) => (
-                      <div key={idx} className="flex items-start space-x-2 text-xs text-slate-700">
-                        <span className="text-emerald-500 shrink-0 font-bold select-none">•</span>
-                        <span>{factor.text}</span>
-                      </div>
-                    ))
+
+                <div className="space-y-3 bg-slate-50 p-4 rounded-xl border border-slate-100">
+                  {prediction ? (
+                    (() => {
+                      const labelMapping: Record<string, string> = {
+                        age: "Age",
+                        distanceFromHome: "Commute Distance",
+                        monthlyIncome: "Monthly Income",
+                        overTime: "Overtime Required",
+                        jobSatisfaction: "Job Satisfaction",
+                        environmentSatisfaction: "Environment Satisfaction",
+                        workLifeBalance: "Work-Life Balance",
+                        yearsAtCompany: "Years at Company",
+                        yearsSinceLastPromotion: "Years Since Promotion",
+                        stockOptionLevel: "Stock Option Level",
+                        maritalStatus: "Marital Status",
+                        businessTravel: "Business Travel",
+                        jobInvolvement: "Job Involvement",
+                        numCompaniesWorked: "Companies Worked",
+                        relationshipSatisfaction: "Relationship Satisfaction",
+                      };
+
+                      const combinedDrivers = [
+                        ...prediction.topRiskFactors.map(f => ({ ...f, type: 'risk' as const })),
+                        ...prediction.protectiveFactors.map(f => ({ ...f, type: 'protective' as const }))
+                      ]
+                      .sort((a, b) => Math.abs(b.impact) - Math.abs(a.impact))
+                      .slice(0, 5);
+
+                      const maxAbsImpact = Math.max(...combinedDrivers.map(d => Math.abs(d.impact)), 0.10);
+
+                      return (
+                        <div className="space-y-3.5">
+                          {combinedDrivers.map((driver, idx) => {
+                            const percentWidth = (Math.abs(driver.impact) / maxAbsImpact) * 100;
+                            const displayName = labelMapping[driver.feature] || driver.feature;
+                            const isRisk = driver.type === 'risk';
+                            const signedValText = isRisk ? `+${Math.round(driver.impact * 100)}%` : `${Math.round(driver.impact * 100)}%`;
+
+                            return (
+                              <div key={idx} className="grid grid-cols-12 gap-3 items-center text-xs">
+                                {/* Feature Name */}
+                                <div className="col-span-4 font-semibold text-slate-700 truncate" title={displayName}>
+                                  {displayName}
+                                </div>
+
+                                {/* Bar Visualizer */}
+                                <div className="col-span-6 h-5 relative flex items-center bg-slate-200/50 rounded overflow-hidden px-1">
+                                  {/* Center line (0 impact) */}
+                                  <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-slate-400/50 z-10" />
+
+                                  {/* The impact bar */}
+                                  <div 
+                                    className={`h-3.5 rounded-sm transition-all duration-500 ${isRisk ? 'bg-rose-500' : 'bg-emerald-500'}`}
+                                    style={{
+                                      width: `${percentWidth / 2}%`,
+                                      left: isRisk ? '50%' : 'auto',
+                                      right: !isRisk ? '50%' : 'auto',
+                                      position: 'absolute'
+                                    }}
+                                  />
+                                </div>
+
+                                {/* Score indicator label */}
+                                <div className={`col-span-2 font-mono text-right font-extrabold ${isRisk ? 'text-rose-600' : 'text-emerald-600'}`}>
+                                  {signedValText}
+                                </div>
+                              </div>
+                            );
+                          })}
+
+                          <div className="flex justify-between items-center text-[9px] font-mono text-slate-400 border-t border-slate-200/60 pt-2 px-1">
+                            <span>◄ Decreases Attrition Risk (Favorable)</span>
+                            <span>SHAP Impact Shift</span>
+                            <span>Increases Attrition Risk (Unfavorable) ►</span>
+                          </div>
+                        </div>
+                      );
+                    })()
                   ) : (
-                    <div className="text-xs text-slate-400 italic">No distinct protective factors found.</div>
+                    <div className="text-xs text-slate-400 italic text-center py-4">No prediction data ready for SHAP rendering.</div>
                   )}
                 </div>
               </div>
